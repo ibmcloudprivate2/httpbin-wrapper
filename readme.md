@@ -17,6 +17,12 @@ npm test
 ```
 
 build docker image
+
+```sh
+docker build . -t <image-name>:<image-tag>
+```
+
+example
 ```sh
 docker build . -t js-httpbin:2.0
 ```
@@ -39,10 +45,21 @@ docker login
 
 tag it
 ```sh
+docker tag <image-name>:<image-tag> <your-dockerhub-acct>/<image-name>:<image-tag>
+```
+
+example
+```sh
 docker tag js-httpbin:2.0 jaricsng/js-httpbin:2.0
 ```
 
 push it
+
+```
+docker push <your-dockerhub-acct>/<image-name>:<image-tag>
+```
+
+example
 ```
 docker push jaricsng/js-httpbin:2.0
 ```
