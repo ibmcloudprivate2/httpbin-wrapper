@@ -1,0 +1,25 @@
+{
+    "name": "ls",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "node server.js",
+        "start_local": "node -r dotenv/config server.js",
+        "test": "nyc mocha -r dotenv/config --exit --timeout 10000"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "request": "^2.88.0"
+    },
+    "devDependencies": {
+        "chai": "^4.2.0",
+        "dotenv": "^8.0.0",
+        "istanbul": "^0.4.5",
+        "mocha": "^6.1.4",
+        "nyc": "^14.1.1",
+        "supertest": "^4.0.2"
+    }
+}
