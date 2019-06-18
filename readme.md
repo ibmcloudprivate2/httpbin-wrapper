@@ -8,10 +8,6 @@
 
 run locally
 ```sh
-export PORT=3000
-export URL=https://httpbin.org/
-export URI=delay/1
-
 npm run start_local
 ```
 
