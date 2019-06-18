@@ -12,7 +12,7 @@ npm run start_local
 ```
 
 run test
-```
+```sh
 npm test
 ```
 
@@ -55,12 +55,12 @@ docker tag js-httpbin:2.0 jaricsng/js-httpbin:2.0
 
 push it
 
-```
+```sh
 docker push <your-dockerhub-acct>/<image-name>:<image-tag>
 ```
 
 example
-```
+```sh
 docker push jaricsng/js-httpbin:2.0
 ```
 
