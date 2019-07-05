@@ -2,3 +2,4 @@
 .nyc_output
 tmp
 node_modules
+istio-1.2.0
