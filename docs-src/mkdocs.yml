@@ -1,0 +1,7 @@
+site_name: httpbin-wrapper
+nav:
+    - Introduction: index.md
+    - Prepare: prepare.md
+# theme: readthedocs
+theme:
+  name: 'material'
