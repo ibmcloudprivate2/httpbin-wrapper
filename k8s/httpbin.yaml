@@ -1,0 +1,64 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: js-httpbin-service
+  namespace: js-demo-ns
+spec:
+  selector:
+    app: js-httpbin-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: js-httpbin-deployment
+  namespace: js-demo-ns
+  labels:
+    app: js-httpbin-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: js-httpbin-app
+  template:
+    metadata:
+      labels:
+        app: js-httpbin-app
+    spec:
+      containers:
+      # - name: js-httpbin-app
+      #   image: mycluster.icp:8500/js-demo-ns/js-httpbin:2.0
+      #   imagePullPolicy: Always
+      #   ports:
+      #   - containerPort: 3000
+      - env:
+        - name: TARGET_URL
+          value: https://httpbin.org
+        - name: CONTAINER_PORT
+          value: "3000"
+        - name: TARGET_URI
+          value: /delay/1
+        image: mycluster.icp:8500/js-demo-ns/js-httpbin:2.0
+        imagePullPolicy: Always
+        name: js-httpbin-app
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+        livenessProbe:
+          httpGet:
+            path: /liveness
+            port: 3000
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+
