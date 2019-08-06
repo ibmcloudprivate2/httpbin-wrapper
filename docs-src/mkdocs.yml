@@ -1,7 +1,10 @@
 site_name: httpbin-wrapper
 nav:
     - Introduction: index.md
+    - Topics: topics.md
     - Prepare: prepare.md
+    - Hands-on: hands-on.md
+
 # theme: readthedocs
 theme:
   name: 'material'
