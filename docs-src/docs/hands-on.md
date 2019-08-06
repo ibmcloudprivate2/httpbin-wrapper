@@ -53,7 +53,7 @@ this is a nodejs application that calls httpbin.org API and you can then use
 
 7. run the image
    
-   ```sh
+   ```
    kubectl apply -f ./k8s/httpbin.yaml
    ```
 

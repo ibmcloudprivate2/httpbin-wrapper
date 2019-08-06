@@ -12,10 +12,10 @@ Ensure your development environment has the following
 
 ## Verify your setup
 
-```sh
+```
 node -v
 ```
 
-```sh
+```
 npm -v
 ```
