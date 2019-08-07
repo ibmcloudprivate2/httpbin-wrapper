@@ -356,33 +356,49 @@
 </ol>
 <h2 id="on-your-machine">On your machine</h2>
 <ol>
-<li>ensure you have your <a href="../prepare/">pre-requisite</a> installed</li>
-<li>test the application</li>
+<li>
+<p>ensure you have your <a href="../prepare/">pre-requisite</a> installed</p>
+</li>
+<li>
+<p>test the application</p>
+</li>
 </ol>
-<p><code>npm install
-   npm test</code></p>
+<pre><code>   npm install
+   npm test
+</code></pre>
+
 <ol>
 <li>build the image </li>
 </ol>
-<p><code>docker build . -t &lt;image-name&gt;:&lt;image-tag&gt;</code></p>
+<pre><code>   docker build . -t &lt;image-name&gt;:&lt;image-tag&gt;
+</code></pre>
+
 <ol>
 <li>test the image</li>
 </ol>
-<p><code>docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 js-httpbin:2.0 &lt;image-name&gt;:&lt;image-tag&gt;</code></p>
+<pre><code>   docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 js-httpbin:2.0 &lt;image-name&gt;:&lt;image-tag&gt;
+</code></pre>
+
 <ol>
 <li>tag the image for ICP</li>
 </ol>
-<p><code>docker tag js-httpbin:2.0 mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;</code></p>
+<pre><code>   docker tag js-httpbin:2.0 mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;
+</code></pre>
+
 <ol>
 <li>push the image to kubernetes platform</li>
 </ol>
 <p>edit /etc/hosts to map  mycluster.icp to ICP IP address and configure docker to use insecure login</p>
-<p><code>docker login mycluster.icp:8500
-   docker push mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;</code></p>
+<pre><code>   docker login mycluster.icp:8500
+   docker push mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;
+</code></pre>
+
 <ol>
 <li>run the image</li>
 </ol>
-<p><code>kubectl apply -f ./k8s/httpbin.yaml</code></p>
+<pre><code>   kubectl apply -f ./k8s/httpbin.yaml
+</code></pre>
+
 <h2 id="further-exercise">Further exercise</h2>
 <ol>
 <li>modify the application</li>
