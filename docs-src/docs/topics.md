@@ -8,7 +8,7 @@ We will do a quick overview of the following and have a hands-on of working with
 - Kubernetes
 - Microservice
 - Microservice Architecture
-- DevOps
+- DevSecOps
 
 ## Resources
 
