@@ -10,6 +10,11 @@ Ensure your development environment has the following
     
     > install [kubectl](https://www.ibm.com/support/knowledgecenter/SSBS6K_3.2.0/manage_cluster/install_kubectl.html)
 
+> In this tutorial, we will be doing our docker development on Ubuntun 18.04 and we will create a ubuntu VM on your machine host using multipass.
+
+> the tutorial can be performed on Mac host too.
+> for Windows users, you will need to install multipass and provision a Ubuntu 18.04 VM with multipass.
+
 ## Verify your setup
 
 ```
