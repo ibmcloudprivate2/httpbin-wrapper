@@ -270,8 +270,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-nodejs-and-npm" title="Install Nodejs and NPM" class="md-nav__link">
-    Install Nodejs and NPM
+  <a href="#configure-docker-insecure-repo" title="Configure Docker insecure repo" class="md-nav__link">
+    Configure Docker insecure repo
   </a>
   
     <nav class="md-nav">
@@ -333,10 +333,70 @@
       
 
 
-  <li class="md-nav__item">
-    <a href="../hands-on/" title="Hands-on" class="md-nav__link">
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-4" type="checkbox" id="nav-4">
+    
+    <label class="md-nav__link" for="nav-4">
       Hands-on
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-4">
+        Hands-on
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../nodejs/" title="nodejs" class="md-nav__link">
+      nodejs
     </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../java/" title="java" class="md-nav__link">
+      java
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../swift/" title="swift" class="md-nav__link">
+      swift
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python/" title="python" class="md-nav__link">
+      python
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
   </li>
 
     
@@ -426,8 +486,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-nodejs-and-npm" title="Install Nodejs and NPM" class="md-nav__link">
-    Install Nodejs and NPM
+  <a href="#configure-docker-insecure-repo" title="Configure Docker insecure repo" class="md-nav__link">
+    Configure Docker insecure repo
   </a>
   
     <nav class="md-nav">
@@ -609,37 +669,46 @@ for Windows users, you will need to install multipass and provision a Ubuntu 18.
 <pre><code>id -nG
 </code></pre>
 
-<h2 id="install-nodejs-and-npm">Install Nodejs and NPM</h2>
+<h2 id="configure-docker-insecure-repo">Configure Docker insecure repo</h2>
 <ul>
-<li>Install Nodejs from the repositories</li>
+<li>Edit /etc/docker/daemon.json and update the key "insecure-registries"</li>
 </ul>
-<pre><code>sudo apt install nodejs
+<pre><code>{
+  &quot;insecure-registries&quot; : [&quot;mycluster.icp:8500&quot;]
+}
 </code></pre>
 
 <ul>
-<li>Uninstall Nodejs</li>
+<li>restart docker</li>
 </ul>
-<pre><code>sudo apt remove nodejs
+<pre><code>sudo systemctl restart docker
 </code></pre>
 
 <ul>
-<li>we will install nodejs version 10.16.2</li>
-<li>we will download a script <strong><em>nodesource_setup.sh</em></strong> for a specific version of nodejs</li>
-<li>then run the downloaded script where PPA will be added to your configuration and your local package cache will be updated.</li>
-<li>nodejs package contains the nodejs binary as well as npm, so you don't need to install npm separately. </li>
+<li>test login to ICP docker repo, you will need to edit and update your /etc/hosts file to map your ICP <strong>192.168.0.5</strong> to mycluster.icp</li>
 </ul>
-<pre><code>cd ~
-curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-sudo bash nodesource_setup.sh
-sudo apt install nodejs -y
-node -v
-npm -v
+<p>sample /etc/hosts</p>
+<pre><code># Your system has configured 'manage_etc_hosts' as True.
+# As a result, if you wish for changes to this file to persist
+# then you will need to either
+# a.) make changes to the master file in /etc/cloud/templates/hosts.debian.tmpl
+# b.) change or remove the value of 'manage_etc_hosts' in
+#     /etc/cloud/cloud.cfg or cloud-config from user-data
+#
+127.0.1.1 linux-vm linux-vm
+127.0.0.1 localhost
+192.168.0.5 mycluster.icp
+
+# The following lines are desirable for IPv6 capable hosts
+::1 ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
 </code></pre>
 
-<ul>
-<li>for some npm packages to work (those that require compiling code from source, for example), you will need to install the build-essential package</li>
-</ul>
-<pre><code>sudo apt install build-essential
+<pre><code>docker login mycluster.icp:8500
 </code></pre>
 
 <h3 id="clone-the-project">clone the project</h3>
@@ -744,13 +813,13 @@ multipass purge
           </a>
         
         
-          <a href="../hands-on/" title="Hands-on" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+          <a href="../nodejs/" title="nodejs" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
             <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
               <span class="md-flex__ellipsis">
                 <span class="md-footer-nav__direction">
                   Next
                 </span>
-                Hands-on
+                nodejs
               </span>
             </div>
             <div class="md-flex__cell md-flex__cell--shrink">

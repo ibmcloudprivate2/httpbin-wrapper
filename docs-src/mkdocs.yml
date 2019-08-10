@@ -3,9 +3,12 @@ nav:
     - Introduction: index.md
     - Topics: topics.md
     - Prepare: prepare.md
-    - Hands-on: hands-on.md
+    - Hands-on: 
+        nodejs: nodejs.md
+        java: java.md
+        swift: swift.md
+        python: python.md
     - About: about.md
-
 # theme: readthedocs
 theme:
   name: 'material'
