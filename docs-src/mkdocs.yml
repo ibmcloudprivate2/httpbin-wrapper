@@ -7,7 +7,7 @@ nav:
         nodejs: nodejs.md
         java: java.md
         swift: swift.md
-        python: python.md
+        flask: python.md
         php: php.md
         go: go.md
         loopback: loopback.md
