@@ -4,13 +4,14 @@ nav:
     - Topics: topics.md
     - Prepare: prepare.md
     - Hands-on: 
-        nodejs: nodejs.md
-        java: java.md
-        swift: swift.md
-        python flask: python.md
-        php: php.md
         go: go.md
+        java (Liberty): java.md
+        java (spring): spring.md
         loopback: loopback.md
+        nodejs: nodejs.md
+        php: php.md
+        python flask: python.md
+        swift: swift.md
     - About: about.md
 # theme: readthedocs
 theme:
