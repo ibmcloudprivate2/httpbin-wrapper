@@ -49,6 +49,12 @@ source ~/.profile
 mkdir $HOME/work
 ```
 
+- check go version
+
+```
+go version
+```
+
 - create a directory hierarchy in this folder through this command in order for you to create your test file. You can replace the value <span style="color:red">**user**</span> with your GitHub username if you plan to use Git to commit and store your Go code on GitHub
 
 ```
