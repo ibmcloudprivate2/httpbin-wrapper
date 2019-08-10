@@ -1,6 +1,9 @@
 
 
 ## Development environment
+
+Level: **Beginner**
+
 Ensure your development environment has the following
 
 1. docker where you can build, run, push/pull images
