@@ -4,6 +4,7 @@ nav:
     - Topics: topics.md
     - Prepare: prepare.md
     - Hands-on: hands-on.md
+    - About: about.md
 
 # theme: readthedocs
 theme:
