@@ -435,7 +435,7 @@
 [?] Project description: Getting started tutorial
 [?] Project root directory: (getting-started)
 [?] Application class name: StarterApplication
-[?] Select project build settings: Enable tslint, Enable prettier, Enable mocha, Enable loopbackBuild
+[?] Select project build settings: Enable eslint, Enable prettier, Enable mocha, Enable loopbackBuild
 </code></pre>
 
 <ul>
@@ -445,6 +445,31 @@
 npm start
 </code></pre>
 
+<p>your own controller</p>
+<pre><code>lb4 controller
+
+[?] Controller class name: hello
+[?] What kind of controller would you like to generate? Empty Controller
+    create src/controllers/hello.controller.ts
+    update src/controllers/index.ts
+Controller Hello was now created in src/controllers/
+</code></pre>
+
+<p>Paste the following contents into the file /src/controllers/hello.controller.ts.</p>
+<pre><code>import {get} from '@loopback/rest';
+export class HelloController {
+  @get('/hello')
+  hello(): string {
+    return 'Hello world!';
+  }
+}
+</code></pre>
+
+<p>Test your application</p>
+<pre><code>npm start
+</code></pre>
+
+<p>access http://192.168.64.7:3000/hello with your browser and you should see "<strong>Hello world!</strong>".</p>
 <p>checkout <a href="https://loopback.io/getting-started.html">getting started</a> on loopback.</p>
                 
                   
