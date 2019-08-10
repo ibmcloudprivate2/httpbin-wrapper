@@ -10,6 +10,7 @@ nav:
         python: python.md
         php: php.md
         go: go.md
+        loopback: loopback.md
     - About: about.md
 # theme: readthedocs
 theme:
