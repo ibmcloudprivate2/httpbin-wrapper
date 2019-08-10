@@ -65,6 +65,25 @@ npm start
 
 access http://192.168.64.7:3000/hello with your browser and you should see "**Hello world!**".
 
+## build docker image
+
+```
+docker build . -t getting-started:1.0
+```
+
+run the image
+
+```
+docker run -p 5000:3000 getting-started:1.0
+```
+
+verify the application is running using http://192.168.64.7:5000/hello with browser
+
+assuming 192.168.64.7 is the IP of the multipass VM.
+
+Once the application is verified running as docker locally, you can tag your image and push to ICP accordingly.
+
+refer to [nodejs](nodejs.md) sample.
 
 checkout [getting started](https://loopback.io/getting-started.html) on loopback.
 

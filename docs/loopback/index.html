@@ -266,6 +266,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#build-docker-image" title="build docker image" class="md-nav__link">
+    build docker image
+  </a>
+  
+</li>
+      
       
       
       
@@ -339,6 +346,13 @@
         <li class="md-nav__item">
   <a href="#loopback-4" title="Loopback 4" class="md-nav__link">
     Loopback 4
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#build-docker-image" title="build docker image" class="md-nav__link">
+    build docker image
   </a>
   
 </li>
@@ -422,6 +436,18 @@ export class HelloController {
 </code></pre>
 
 <p>access http://192.168.64.7:3000/hello with your browser and you should see "<strong>Hello world!</strong>".</p>
+<h2 id="build-docker-image">build docker image</h2>
+<pre><code>docker build . -t getting-started:1.0
+</code></pre>
+
+<p>run the image</p>
+<pre><code>docker run -p 5000:3000 getting-started:1.0
+</code></pre>
+
+<p>verify the application is running using http://192.168.64.7:5000/hello with browser</p>
+<p>assuming 192.168.64.7 is the IP of the multipass VM.</p>
+<p>Once the application is verified running as docker locally, you can tag your image and push to ICP accordingly.</p>
+<p>refer to <a href="../nodejs/">nodejs</a> sample.</p>
 <p>checkout <a href="https://loopback.io/getting-started.html">getting started</a> on loopback.</p>
                 
                   
