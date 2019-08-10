@@ -9,6 +9,7 @@ nav:
         swift: swift.md
         python: python.md
         php: php.md
+        go: go.md
     - About: about.md
 # theme: readthedocs
 theme:
