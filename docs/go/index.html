@@ -75,6 +75,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#setup-go" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -287,9 +291,36 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        go
+      </label>
+    
     <a href="./" title="go" class="md-nav__link md-nav__link--active">
       go
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-go" title="setup go" class="md-nav__link">
+    setup go
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -330,6 +361,35 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#setup-go" title="setup go" class="md-nav__link">
+    setup go
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -338,7 +398,95 @@
                 
                   <h1>go</h1>
                 
-                
+                <h2 id="setup-go">setup go</h2>
+<ul>
+<li>Visit the official Go <a href="https://golang.org/dl/">downloads</a> page and find the URL for the current binary release's tarball, along with its SHA256 hash.</li>
+</ul>
+<pre><code>cd ~
+curl -O https://dl.google.com/go/go1.12.7.linux-amd64.tar.gz
+sha256sum  go1.12.7.linux-amd64.tar.gz
+</code></pre>
+
+<ul>
+<li>extract the tarball</li>
+</ul>
+<pre><code>tar xvf go1.12.7.linux-amd64.tar.gz
+</code></pre>
+
+<ul>
+<li>Recursively change go's owner and group to root, and move it to /usr/local</li>
+</ul>
+<pre><code>sudo chown -R root:root ./go
+sudo mv go /usr/local
+</code></pre>
+
+<p><strong>Note</strong>: Although /usr/local/go is the officially-recommended location, some users may prefer or require different paths.</p>
+<ul>
+<li>set some paths in your environment</li>
+</ul>
+<pre><code>sudo vi ~/.profile
+</code></pre>
+
+<p>At the end of the file, add this line:</p>
+<pre><code>export GOPATH=$HOME/work
+export PATH=$PATH:/usr/local/go/bin:$GOPATH/bin
+</code></pre>
+
+<ul>
+<li>refresh your profile by running</li>
+</ul>
+<pre><code>source ~/.profile
+</code></pre>
+
+<ul>
+<li>Create a new directory for your Go workspace, which is where Go will build its files</li>
+</ul>
+<pre><code>mkdir $HOME/work
+</code></pre>
+
+<ul>
+<li>create a directory hierarchy in this folder through this command in order for you to create your test file. You can replace the value <span style="color:red"><strong>user</strong></span> with your GitHub username if you plan to use Git to commit and store your Go code on GitHub</li>
+</ul>
+<pre><code>mkdir -p work/src/github.com/user/hello
+</code></pre>
+
+<ul>
+<li>create a sample "hello world" go file.</li>
+</ul>
+<pre><code>touch ~/work/src/github.com/user/hello/hello.go
+</code></pre>
+
+<ul>
+<li>copy the following into the hello.go file</li>
+</ul>
+<pre><code>package main
+
+import &quot;fmt&quot;
+
+func main() {
+    fmt.Printf(&quot;hello, world\n&quot;)
+}
+</code></pre>
+
+<ul>
+<li>compile it by invoking the Go command install</li>
+</ul>
+<pre><code>go install github.com/user/hello
+</code></pre>
+
+<ul>
+<li>With the file compiled, you can run it by simply executing the command</li>
+</ul>
+<pre><code>hello
+</code></pre>
+
+<ul>
+<li>You can see where the compiled hello binary is installed by using the which command</li>
+</ul>
+<pre><code>which hello
+</code></pre>
+
+<p>You are all set to develop go.</p>
                 
                   
                 
