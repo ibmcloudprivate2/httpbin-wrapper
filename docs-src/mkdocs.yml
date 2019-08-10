@@ -8,6 +8,7 @@ nav:
         java: java.md
         swift: swift.md
         python: python.md
+        php: php.md
     - About: about.md
 # theme: readthedocs
 theme:
