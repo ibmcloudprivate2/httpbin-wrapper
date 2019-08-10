@@ -5,13 +5,13 @@ nav:
     - Prepare: prepare.md
     - Hands-on: 
         go: go.md
-        java (Liberty): java.md
-        java (spring): spring.md
+        # java (Liberty): java.md
+        # java (spring): spring.md
         loopback: loopback.md
         nodejs: nodejs.md
-        php: php.md
+        # php: php.md
         python flask: python.md
-        swift: swift.md
+        # swift: swift.md
     - About: about.md
 # theme: readthedocs
 theme:
