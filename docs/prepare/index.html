@@ -228,6 +228,95 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ubuntu-linux-setup-for-windows" title="Ubuntu Linux Setup for Windows" class="md-nav__link">
+    Ubuntu Linux Setup for Windows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubuntu-linux-setup-for-macs" title="Ubuntu Linux Setup for Macs" class="md-nav__link">
+    Ubuntu Linux Setup for Macs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vm-info" title="vm info" class="md-nav__link">
+    vm info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-into-vm-shell" title="get into vm shell" class="md-nav__link">
+    get into vm shell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-docker" title="install docker" class="md-nav__link">
+    install docker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-nodejs-and-npm" title="Install Nodejs and NPM" class="md-nav__link">
+    Install Nodejs and NPM
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-project" title="clone the project" class="md-nav__link">
+    clone the project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-exit-shell" title="to exit shell" class="md-nav__link">
+    to exit shell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop-the-vm" title="stop the vm" class="md-nav__link">
+    stop the vm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-and-clean-vm" title="delete and clean vm" class="md-nav__link">
+    delete and clean vm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-help" title="get help" class="md-nav__link">
+    get help
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -283,6 +372,95 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#ubuntu-linux-setup-for-windows" title="Ubuntu Linux Setup for Windows" class="md-nav__link">
+    Ubuntu Linux Setup for Windows
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ubuntu-linux-setup-for-macs" title="Ubuntu Linux Setup for Macs" class="md-nav__link">
+    Ubuntu Linux Setup for Macs
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vm-info" title="vm info" class="md-nav__link">
+    vm info
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-into-vm-shell" title="get into vm shell" class="md-nav__link">
+    get into vm shell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-docker" title="install docker" class="md-nav__link">
+    install docker
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-nodejs-and-npm" title="Install Nodejs and NPM" class="md-nav__link">
+    Install Nodejs and NPM
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-project" title="clone the project" class="md-nav__link">
+    clone the project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#to-exit-shell" title="to exit shell" class="md-nav__link">
+    to exit shell
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop-the-vm" title="stop the vm" class="md-nav__link">
+    stop the vm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-and-clean-vm" title="delete and clean vm" class="md-nav__link">
+    delete and clean vm
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-help" title="get help" class="md-nav__link">
+    get help
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
       
       
       
@@ -320,6 +498,198 @@
 </code></pre>
 
 <pre><code>npm -v
+</code></pre>
+
+<h2 id="ubuntu-linux-setup-for-windows">Ubuntu Linux Setup for Windows</h2>
+<p>download Windows multipass, head over to <a href="https://multipass.run/">here</a>.</p>
+<p><a href="https://discourse.ubuntu.com/t/installing-multipass-for-windows/9547">Installing</a> Multipass for Windows</p>
+<h2 id="ubuntu-linux-setup-for-macs">Ubuntu Linux Setup for Macs</h2>
+<p>download Macs multipass, head over to <a href="https://multipass.run/">here</a>.</p>
+<p>to create a default Ubuntu with
+- name: linux-vm
+- cpu : 4 cores
+- memory: 8GB
+- disk: 40 GB</p>
+<p>run the following command, and it will create a VM spec as of above.</p>
+<pre><code>multipass launch -n linux-vm -m 8G -d 40G -c 4
+</code></pre>
+
+<h3 id="vm-info">vm info</h3>
+<p>to find info about VMs</p>
+<pre><code>multipass list
+</code></pre>
+
+<h3 id="get-into-vm-shell">get into vm shell</h3>
+<p>to access the shell of Ubuntu VM</p>
+<pre><code>multipass shell linux-vm
+</code></pre>
+
+<h3 id="install-docker">install docker</h3>
+<ul>
+<li>update existing package</li>
+</ul>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+
+<ul>
+<li>install a few prerequisite packages which let apt use packages over HTTPS</li>
+</ul>
+<pre><code>sudo apt install apt-transport-https ca-certificates curl software-properties-common
+</code></pre>
+
+<ul>
+<li>add the GPG key for the official Docker repository to your system</li>
+</ul>
+<pre><code>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+</code></pre>
+
+<ul>
+<li>Add the Docker repository to APT sources</li>
+</ul>
+<pre><code>sudo add-apt-repository &quot;deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable&quot;
+</code></pre>
+
+<ul>
+<li>update the package database with the Docker packages from the newly added repo</li>
+</ul>
+<pre><code>sudo apt update &amp;&amp; sudo apt upgrade
+</code></pre>
+
+<ul>
+<li>Make sure you are about to install from the Docker repo instead of the default Ubuntu repo</li>
+</ul>
+<pre><code>apt-cache policy docker-ce
+</code></pre>
+
+<ul>
+<li>install Docker</li>
+</ul>
+<pre><code>sudo apt install docker-ce
+</code></pre>
+
+<ul>
+<li>check Docker status</li>
+</ul>
+<pre><code>sudo systemctl status docker
+</code></pre>
+
+<ul>
+<li>check docker version </li>
+</ul>
+<pre><code>docker version
+</code></pre>
+
+<ul>
+<li>add your user for running docker commands</li>
+</ul>
+<pre><code>sudo usermod -aG docker ${USER}
+</code></pre>
+
+<ul>
+<li>to confirm user has been added</li>
+</ul>
+<pre><code>id -nG
+</code></pre>
+
+<h2 id="install-nodejs-and-npm">Install Nodejs and NPM</h2>
+<ul>
+<li>Install Nodejs from the repositories</li>
+</ul>
+<pre><code>sudo apt install nodejs
+</code></pre>
+
+<ul>
+<li>Uninstall Nodejs</li>
+</ul>
+<pre><code>sudo apt remove nodejs
+</code></pre>
+
+<ul>
+<li>we will install nodejs version 10.16.2</li>
+<li>we will download a script <strong><em>nodesource_setup.sh</em></strong> for a specific version of nodejs</li>
+<li>then run the downloaded script where PPA will be added to your configuration and your local package cache will be updated.</li>
+<li>nodejs package contains the nodejs binary as well as npm, so you don't need to install npm separately. </li>
+</ul>
+<pre><code>cd ~
+curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
+sudo bash nodesource_setup.sh
+sudo apt install nodejs -y
+node -v
+npm -v
+</code></pre>
+
+<ul>
+<li>for some npm packages to work (those that require compiling code from source, for example), you will need to install the build-essential package</li>
+</ul>
+<pre><code>sudo apt install build-essential
+</code></pre>
+
+<h3 id="clone-the-project">clone the project</h3>
+<ul>
+<li>clone the httpbin-wrapper sample project</li>
+</ul>
+<pre><code>git clone https://github.com/ibmcloudprivate2/httpbin-wrapper.git
+
+cd httpbin-wrapper/
+npm install
+</code></pre>
+
+<ul>
+<li>create the .env </li>
+</ul>
+<pre><code>cp .env.sample .env
+</code></pre>
+
+<ul>
+<li>
+<p>run the test using the .env file</p>
+</li>
+<li>
+<p>to run and test your app locally in the linux vm</p>
+</li>
+<li>determine the IP assigned to the vm using multipass list</li>
+</ul>
+<pre><code>multipass list
+
+Name                    State             IPv4             Image
+linux-vm                Running           192.168.64.7     Ubuntu 18.04 LTS
+</code></pre>
+
+<ul>
+<li>login into the vm shell and run </li>
+</ul>
+<pre><code>node -r dotenv/config server.js
+
+output:
+Your port is: 1323
+Running on http:/0.0.0.0:1323
+</code></pre>
+
+<ul>
+<li>from another terminal or from browser use the following url based on the IP you obtained from <strong><em>multipass list</em></strong></li>
+</ul>
+<pre><code>curl http://192.168.64.7:1323/
+
+output:
+{&quot;args&quot;:{},&quot;data&quot;:&quot;&quot;,&quot;files&quot;:{},&quot;form&quot;:{},&quot;headers&quot;:{&quot;Accept&quot;:&quot;application/json&quot;,&quot;Host&quot;:&quot;httpbin.org&quot;},&quot;origin&quot;:&quot;121.7.17.203, 121.7.17.203&quot;,&quot;url&quot;:&quot;https://httpbin.org/delay/1&quot;}
+</code></pre>
+
+<blockquote>
+<p>Your environment is now ready for you to do nodejs development.</p>
+</blockquote>
+<h3 id="to-exit-shell">to exit shell</h3>
+<p>type <strong><em>exit</em></strong> in the multipass linux-vm shell</p>
+<h3 id="stop-the-vm">stop the vm</h3>
+<pre><code>multipass stop linux-vm
+</code></pre>
+
+<h3 id="delete-and-clean-vm">delete and clean vm</h3>
+<pre><code>multipass delete linux-vm 
+multipass purge
+</code></pre>
+
+<h3 id="get-help">get help</h3>
+<pre><code>multipass help
 </code></pre>
                 
                   

@@ -351,51 +351,51 @@
 </ul>
 <h3 id="about-the-application">About the application</h3>
 <p>this is a nodejs application that calls httpbin.org API and you can then use </p>
-<ol>
+<ul>
 <li>Clone the <a href="https://github.com/ibmcloudprivate2/httpbin-wrapper">project</a> which contains the nodeJS that call service in <a href="https://httpbin.org/">httpbin.org</a></li>
-</ol>
+</ul>
 <h2 id="on-your-machine">On your machine</h2>
-<ol>
+<ul>
 <li>
 <p>ensure you have your <a href="../prepare/">pre-requisite</a> installed</p>
 </li>
 <li>
 <p>test the application</p>
 </li>
-</ol>
+</ul>
 <pre><code>   npm install
    npm test
 </code></pre>
 
-<ol>
+<ul>
 <li>build the image </li>
-</ol>
+</ul>
 <pre><code>   docker build . -t &lt;image-name&gt;:&lt;image-tag&gt;
 </code></pre>
 
-<ol>
+<ul>
 <li>test the image</li>
-</ol>
+</ul>
 <pre><code>   docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 js-httpbin:2.0 &lt;image-name&gt;:&lt;image-tag&gt;
 </code></pre>
 
-<ol>
+<ul>
 <li>tag the image for ICP</li>
-</ol>
+</ul>
 <pre><code>   docker tag js-httpbin:2.0 mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;
 </code></pre>
 
-<ol>
+<ul>
 <li>push the image to kubernetes platform</li>
-</ol>
+</ul>
 <p>edit /etc/hosts to map  mycluster.icp to ICP IP address and configure docker to use insecure login</p>
 <pre><code>   docker login mycluster.icp:8500
    docker push mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;
 </code></pre>
 
-<ol>
+<ul>
 <li>run the image</li>
-</ol>
+</ul>
 <pre><code>   kubectl apply -f ./k8s/httpbin.yaml
 </code></pre>
 

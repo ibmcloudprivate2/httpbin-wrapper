@@ -21,5 +21,6 @@ We will do a quick overview of the following and have a hands-on of working with
 7. [Helm](https://helm.sh/) Chart
 8. [Curated](https://github.com/helm/charts) application for Kubernetes
 9. [Singapore Exchange](https://www.ibm.com/case-studies/singapore-exchange-limited) (SGX) IBM Cloud Private Use Case
+10. [migrating monolith to microservice](https://www.ibm.com/cloud/garage/architectures/application-modernization-v2/chunking-strategy-strangler-pattern)
 
 
