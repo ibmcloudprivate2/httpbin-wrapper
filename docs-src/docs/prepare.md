@@ -18,6 +18,11 @@ Ensure your development environment has the following
 > the tutorial can be performed on Mac host too.
 > for Windows users, you will need to install multipass and provision a Ubuntu 18.04 VM with multipass.
 
+The tutorial uses Ubuntu 18.04, if you don't have one, you can use 
+- vmware workstation to create a Ubuntu guest O/S or
+- use multiplass shown in the following instruction, which is available for certain version of Windows, and Mac
+- alternatively you can use [Virtualbox](https://www.virtualbox.org/wiki/Downloads) with [Vagrant](https://www.vagrantup.com/downloads.html), with these you can have a shared folder between your host and guest Ubuntu O/S. [Here](https://github.com/jaricsng/ibm-cloud-private/tree/master/samples/linux-client) you can find how to use virtualbox and vagrant.
+
 ## Verify your setup
 
 ```
