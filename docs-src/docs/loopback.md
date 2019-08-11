@@ -2,6 +2,8 @@
 
 ## Loopback 4
 
+Loopback is nodejs framework with TypeScript where you can develop API application fast using Swagger and OpenAPI.
+
 - to develop loopback 4 you will need nodejs and npm, ensure you have both nodejs and npm installed, refer to [nodejs setup](nodejs.md).
 
 - Install LoopBack 4 CLI
