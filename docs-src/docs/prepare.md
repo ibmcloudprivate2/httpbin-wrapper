@@ -271,7 +271,7 @@ Vagrantfile runs inline script to
   - install docker
   - disable SELinux
 
-## first time provisioning of machine
+### first time provisioning of machine
 
 ```
 cd mycentos
