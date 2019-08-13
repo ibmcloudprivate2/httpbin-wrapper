@@ -5,3 +5,4 @@ node_modules
 istio-1.2.0
 .DS_Store
 site
+.vagrant

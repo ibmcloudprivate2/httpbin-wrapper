@@ -256,3 +256,65 @@ multipass purge
 multipass help
 ```
 
+## Using Vagrant for CentOS 7
+
+Once you have virtualbox and vagrant installed, you can run the following commands that performs the following
+
+about the Vagrantfile
+- the VM is created using a box "centos 7.6" and using virtualbox as the cloud provider with 2 cpu, 4GB RAM
+- user Vagrant
+- and runs inline script to install docker
+- a initial **Vagrantfile** can be created with ```vagrant init centos/7```
+- cpu: 2, ram: 8 GB, change the VM spec accordingly in the Vagrantfile 
+
+Vagrantfile runs inline script to 
+  - install docker
+  - disable SELinux
+
+## first time provisioning of machine
+
+```
+cd mycentos
+vagrant up 
+```
+
+- after the install finished it will reboot the machine, and you have a running centos where you ssh into machine shell as follows 
+**note**: you will see the following message, you can ignore it.
+
+
+> default: Created symlink from /etc/systemd/system/multi-user.target.wants/docker.service to /usr/lib/systemd/system/docker.service.
+> default: Job for docker.service failed because the control process exited with error code. See "systemctl status docker.service" and "journalctl -xe" for details.
+
+```
+vagrant ssh
+```
+
+### shutdown machine
+
+```
+vagrant halt
+```
+
+### power up machine
+
+```
+vagrant up
+```
+
+### suspends the machine
+
+```
+vagrant suspend
+```
+
+### restarts machine
+
+```
+vagrant reload
+```
+
+### delete the machine
+
+```
+vagrant destroy
+```
