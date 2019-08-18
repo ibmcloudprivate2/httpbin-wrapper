@@ -289,6 +289,18 @@ vagrant up
 vagrant ssh
 ```
 
+- check cpu in centos
+
+```
+cat /proc/cpuinfo
+```
+
+- check memory info
+
+```
+cat /proc/meminfo
+```
+
 ### shutdown machine
 
 ```
