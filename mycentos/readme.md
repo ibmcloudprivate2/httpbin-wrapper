@@ -1,4 +1,12 @@
 
+the Vagrantfile uses centos 7 image, if you prefer Ubuntu, head over to [boxes](https://app.vagrantup.com/boxes/search) to find your box image of choice.
+
+the vm spec
+- centos 7
+- cpu: 4
+- memory: 8192 
+- IP: 192.168.33.10
+
 ## login
 
 ```
