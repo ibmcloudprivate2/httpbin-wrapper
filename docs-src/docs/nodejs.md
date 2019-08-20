@@ -287,8 +287,19 @@ kubectl apply -f ./k8s/httpbin.yaml
 6. update the application to new version of image
 7. rollback
 
-## References
+## Resources
 
 - using [virtualbox and vagrant](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/readme.md) to practice nodejs deployment to ICP.
+- IBM [Code Patterns](https://developer.ibm.com/patterns/) sample codes to many different area, AI, Blockchain, Data Science, DevOps, Machine learning, API Management and many others.
+- IBM [Architecture Centers](https://www.ibm.com/cloud/garage/architectures) provides Reference Architecture to for many different categores: multi cloud, hybrid cloud, AI, Microservice, Security, Service Management.
+- kubectl [Cheat Sheet](https://kubernetes.io/docs/reference/kubectl/cheatsheet/)
+- IBM community [helm](https://github.com/IBM/charts) chart
+- community [Helm](https://github.com/helm/charts) chart stable and incubator 
+- community [Operator](https://operatorhub.io/) application catalog
+- Infrastructure as Code [Terrform](https://www.terraform.io/) to multi cloud [providers](https://www.terraform.io/docs/providers/index.html), IBM,OpenStack, AWS, Azure, Google, vmware and many more.
+- Configuration as Code with [Ansible](https://www.ansible.com/) or [Chef](https://www.chef.io/products/automate/)
+- OWASP Zed Attack Proxy ([ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)) [tutorial](https://owasp-academy.teachable.com/p/owasp-zap-tutorial).
+- devops security [aqua](https://www.aquasec.com/) 
+- code scan [SonarQube](https://www.sonarqube.org/)
 - uninstall nodejs and npm ```sudo yum remove -y nodejs npm```
 - setup virtualbox guest addition, run ```vagrant plugin install vagrant-vbguest``` to [guest addition](https://www.virtualbox.org/manual/ch04.html) for the VM.
