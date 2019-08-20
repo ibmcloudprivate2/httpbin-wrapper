@@ -13,6 +13,16 @@ this is a nodejs application that calls httpbin.org API and you can then use
 
 - Clone the [project](https://github.com/ibmcloudprivate2/httpbin-wrapper) which contains the nodeJS that call service in [httpbin.org](https://httpbin.org/)
 
+High level steps
+
+1. develop app
+2. test it
+3. build docker image
+4. test it: docker run image
+5. docker tag (for target image repo)
+6. docker push
+7. run in k8s: kubectl apply - yaml
+
 
 ## On your machine
 
@@ -101,3 +111,8 @@ sudo apt install build-essential
 5. scale it
 6. update the application to new version of image
 7. rollback
+
+
+## References
+
+- using [virtualbox and vagrant](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/readme.md) to practice nodejs deployment to ICP.

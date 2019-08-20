@@ -312,6 +312,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
       
       
       
@@ -411,6 +418,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#references" title="References" class="md-nav__link">
+    References
+  </a>
+  
+</li>
+      
       
       
       
@@ -442,6 +456,16 @@
 <ul>
 <li>Clone the <a href="https://github.com/ibmcloudprivate2/httpbin-wrapper">project</a> which contains the nodeJS that call service in <a href="https://httpbin.org/">httpbin.org</a></li>
 </ul>
+<p>High level steps</p>
+<ol>
+<li>develop app</li>
+<li>test it</li>
+<li>build docker image</li>
+<li>test it: docker run image</li>
+<li>docker tag (for target image repo)</li>
+<li>docker push</li>
+<li>run in k8s: kubectl apply - yaml</li>
+</ol>
 <h2 id="on-your-machine">On your machine</h2>
 <ul>
 <li>ensure you have your <a href="../prepare/">pre-requisite</a> installed</li>
@@ -528,6 +552,10 @@ npm -v
 <li>update the application to new version of image</li>
 <li>rollback</li>
 </ol>
+<h2 id="references">References</h2>
+<ul>
+<li>using <a href="https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/readme.md">virtualbox and vagrant</a> to practice nodejs deployment to ICP.</li>
+</ul>
                 
                   
                 
