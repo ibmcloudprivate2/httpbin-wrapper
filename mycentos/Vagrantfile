@@ -66,13 +66,18 @@ Vagrant.configure("2") do |config|
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
   config.vm.provision "shell", inline: <<-SHELL
-     sudo groupadd docker 
-     sudo usermod -aG docker vagrant 
-     sudo yum install git epel-release docker ansible dnsmasq wget -y 
-     # sudo sed -i --follow-symlinks 's/^SELINUX=.*/SELINUX=disabled/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux
-     sudo systemctl enable docker 
-     sudo systemctl start docker
-     # sudo sed -i --follow-symlinks 's/^SELINUX=.*/SELINUX=enforcing/g' /etc/sysconfig/selinux && cat /etc/sysconfig/selinux
-     # sudo reboot -h now
+    sudo groupadd docker 
+    sudo usermod -aG docker vagrant 
+    sudo yum install git epel-release docker ansible dnsmasq wget -y
+    sudo yum install -y gcc-c++ make
+    sudo curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
+    sudo yum install -y nodejs
+    sudo systemctl enable docker 
+    sudo systemctl start docker
+    sudo sed -i 's/overlay2/devicemapper/g' /etc/sysconfig/docker-storage && cat /etc/sysconfig/docker-storage
+    sudo sed -i 's/overlay2/devicemapper/g' /etc/sysconfig/docker-storage-setup && cat /etc/sysconfig/docker-storage-setup
+    sudo systemctl restart docker
+    sudo yum update -y
   SHELL
+  # config.vm.provision :shell, path: "bootstrap.sh"
 end

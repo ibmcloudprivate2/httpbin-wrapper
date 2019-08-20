@@ -16,8 +16,27 @@ vagrant ssh
 edit the following files, replace the string **overlay2** with **devicemapper**
 
 ```
+more /etc/sysconfig/docker-storage
+
+DOCKER_STORAGE_OPTIONS="--storage-driver overlay2 "
+```
+
+```
 sudo vi /etc/sysconfig/docker-storage
+
+DOCKER_STORAGE_OPTIONS="--storage-driver devicemapper "
+```
+
+```
+more /etc/sysconfig/docker-storage-setup
+
+STORAGE_DRIVER=overlay2
+```
+
+```
 sudo vi /etc/sysconfig/docker-storage-setup
+
+STORAGE_DRIVER=devicemapper
 ```
 
 ## setup hosts file
@@ -57,8 +76,6 @@ sudo systemctl restart docker
 ## install nodjs
 
 ```
-yum install -y gcc-c++ make
-curl -sL https://rpm.nodesource.com/setup_10.x | sudo -E bash -
 sudo yum install nodejs
 ```
 
