@@ -30,7 +30,7 @@ If you do not have a Linus O/S, do the following, on your host O/S
 
 1. [download](https://www.virtualbox.org/wiki/Downloads) and install virtualbox in your host O/S
 2. [download](https://www.vagrantup.com/downloads.html) and install vagrant in your host O/S
-3. create a folder of choice and create a Vagrantfile with the following [content](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/Vagrantfile).
+3. create a folder of choice and create a file **Vagrantfile** with the following [content](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/Vagrantfile).
 4. run ```vagrant up``` and a centos will be provisioned using the Vagrantfile with VirtualBox. 
 5. run ```vagrant ssh`` to login to the provisioned centos
 
