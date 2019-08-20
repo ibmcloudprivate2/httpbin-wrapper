@@ -91,14 +91,91 @@ cp .env.sample .env
 
 ```
 node -v
+v10.16.3
+
 npm -v
+6.9.0
 ```
 
 ### install the application
 
 ```   
 npm install
+
 npm test
+
+> ls@1.0.0 test /home/vagrant/httpbin-wrapper
+> nyc mocha -r dotenv/config --exit --timeout 10000
+
+Your port is: 1323
+Running on http:/0.0.0.0:1323
+
+
+  API Tests
+    # Test root context with defined url and uri
+getURL: https://httpbin.org/delay/1
+context /: 200
+{ args: {},
+  data: '',
+  files: {},
+  form: {},
+  headers: { Accept: 'application/json', Host: 'httpbin.org' },
+  origin: '219.83.38.2, 219.83.38.2',
+  url: 'https://httpbin.org/delay/1' }
+      ✓ should be access to target url and uri (2136ms)
+    # Test readiness
+getURL: https://httpbin.org/status/200
+context /readiness: 200
+{}
+      ✓ should be ready (1188ms)
+    # Test liveness
+getURL: https://httpbin.org/status/200
+context /liveness: 200
+{}
+      ✓ should be alive (1167ms)
+    # Test status 200
+getURL: https://httpbin.org/status/200
+context /status200: 200
+{}
+      ✓ should be status 200 (1080ms)
+    # Test status 503
+getURL: https://httpbin.org/status/503
+context /status503: 503
+{}
+      ✓ should be status 503 (2108ms)
+    # Test delay 1 sec
+getURL: https://httpbin.org/delay/1
+context /delay1: 200
+{ args: {},
+  data: '',
+  files: {},
+  form: {},
+  headers: { Accept: 'application/json', Host: 'httpbin.org' },
+  origin: '219.83.38.2, 219.83.38.2',
+  url: 'https://httpbin.org/delay/1' }
+      ✓ should be delay 1 sec (3033ms)
+    # Test delay 5 sec
+getURL: https://httpbin.org/delay/5
+context /delay5: 200
+{ args: {},
+  data: '',
+  files: {},
+  form: {},
+  headers: { Accept: 'application/json', Host: 'httpbin.org' },
+  origin: '219.83.38.2, 219.83.38.2',
+  url: 'https://httpbin.org/delay/5' }
+      ✓ should be delay 5 sec (7250ms)
+
+
+  7 passing (18s)
+
+-----------|----------|----------|----------|----------|-------------------|
+File       |  % Stmts | % Branch |  % Funcs |  % Lines | Uncovered Line #s |
+-----------|----------|----------|----------|----------|-------------------|
+All files  |    83.33 |       50 |    88.24 |    92.31 |                   |
+ config.js |      100 |      100 |      100 |      100 |                   |
+ server.js |     83.1 |       50 |    88.24 |    92.19 |... 15,116,117,120 |
+-----------|----------|----------|----------|----------|-------------------|
 ```
 
 ### test the appliation
@@ -110,6 +187,9 @@ node -r dotenv/config server.js &
 
 curl http://localhost:1323
 
+getURL: https://httpbin.org/delay/1
+context /: 200
+{"args":{},"data":"","files":{},"form":{},"headers":{"Accept":"application/json","Host":"httpbin.org"},"origin":"219.83.38.2, 219.83.38.2","url":"https://httpbin.org/delay/1"}[vagrant@node1 httpbin-wrapper]
 ```
 
 - terminal the app, the process id with the following command.
