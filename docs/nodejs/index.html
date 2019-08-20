@@ -292,16 +292,64 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#on-your-machine" title="On your machine" class="md-nav__link">
-    On your machine
+  <a href="#in-centos" title="In centos" class="md-nav__link">
+    In centos
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-insecure-docker-login" title="setup insecure docker login" class="md-nav__link">
+    setup insecure docker login
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#install-nodejs-and-npm" title="Install Nodejs and NPM" class="md-nav__link">
-    Install Nodejs and NPM
+        
+          <li class="md-nav__item">
+  <a href="#verify-docker" title="verify docker" class="md-nav__link">
+    verify docker
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-hosts-file" title="setup hosts file" class="md-nav__link">
+    setup hosts file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-tutorial-project" title="clone the tutorial project" class="md-nav__link">
+    clone the tutorial project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-nodejs-and-npm-are-installed" title="verify nodejs and npm are installed" class="md-nav__link">
+    verify nodejs and npm are installed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-application" title="install the application" class="md-nav__link">
+    install the application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-the-appliation" title="test the appliation" class="md-nav__link">
+    test the appliation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -398,16 +446,64 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#on-your-machine" title="On your machine" class="md-nav__link">
-    On your machine
+  <a href="#in-centos" title="In centos" class="md-nav__link">
+    In centos
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#setup-insecure-docker-login" title="setup insecure docker login" class="md-nav__link">
+    setup insecure docker login
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#install-nodejs-and-npm" title="Install Nodejs and NPM" class="md-nav__link">
-    Install Nodejs and NPM
+        
+          <li class="md-nav__item">
+  <a href="#verify-docker" title="verify docker" class="md-nav__link">
+    verify docker
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#setup-hosts-file" title="setup hosts file" class="md-nav__link">
+    setup hosts file
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#clone-the-tutorial-project" title="clone the tutorial project" class="md-nav__link">
+    clone the tutorial project
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#verify-nodejs-and-npm-are-installed" title="verify nodejs and npm are installed" class="md-nav__link">
+    verify nodejs and npm are installed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-the-application" title="install the application" class="md-nav__link">
+    install the application
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-the-appliation" title="test the appliation" class="md-nav__link">
+    test the appliation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -445,7 +541,7 @@
                   <h1>nodejs</h1>
                 
                 <h2 id="introduction">Introduction</h2>
-<p>In this hands on exercise, you will learn</p>
+<p>In this tutorial, you will learn</p>
 <ul>
 <li>how to build a docker image</li>
 <li>how to push an image to a private repo</li>
@@ -464,82 +560,147 @@
 <li>test it: docker run image</li>
 <li>docker tag (for target image repo)</li>
 <li>docker push</li>
+<li>download ICP cli tools: cloudctl and kubectl</li>
+<li>cloudctl login </li>
 <li>run in k8s: kubectl apply - yaml</li>
 </ol>
-<h2 id="on-your-machine">On your machine</h2>
-<ul>
-<li>ensure you have your <a href="../prepare/">pre-requisite</a> installed</li>
-</ul>
-<h2 id="install-nodejs-and-npm">Install Nodejs and NPM</h2>
-<ul>
-<li>Install Nodejs from the repositories</li>
-</ul>
-<pre><code>sudo apt install nodejs
+<p>To do this tutorial, we will use a Linux CentOS.</p>
+<p>If you do not have a Linus O/S, do the following, on your host O/S</p>
+<ol>
+<li>download and install virtualbox in your host O/S</li>
+<li>download and install vagrant in your host O/S</li>
+<li>create a folder of choice and create a Vagrantfile with the following <a href="https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/Vagrantfile">content</a>.</li>
+<li>run <code>vagrant up</code> and a centos will be provisioned using the Vagrantfile with VirtualBox. </li>
+<li>run <code>`vagrant ssh</code> to login to the provisioned centos</li>
+</ol>
+<p>In the CentOS, you will do the following steps</p>
+<ol>
+<li>git clone https://github.com/ibmcloudprivate2/httpbin-wrapper.git</li>
+<li>setup insecure docker login</li>
+<li>setup hosts file</li>
+<li>install nodejs app</li>
+<li>test the nodejs app</li>
+<li>build image</li>
+<li>tag the image</li>
+<li>push the image to ICP image repo</li>
+<li>run the image in ICP</li>
+</ol>
+<h2 id="in-centos">In centos</h2>
+<h3 id="setup-insecure-docker-login">setup insecure docker login</h3>
+<p>setup insecure docker login to ICP repo, edit  /etc/docker/daemon.json to include the following</p>
+<pre><code>{ &quot;insecure-registries&quot;: [&quot;mycluster.icp:8500&quot;] }
 </code></pre>
 
-<ul>
-<li>Uninstall Nodejs</li>
-</ul>
-<pre><code>sudo apt remove nodejs
+<p>restart docker</p>
+<pre><code>sudo systemctl restart docker
 </code></pre>
 
-<ul>
-<li>we will install nodejs version 10.16.2</li>
-<li>we will download a script <strong><em>nodesource_setup.sh</em></strong> for a specific version of nodejs</li>
-<li>then run the downloaded script where PPA will be added to your configuration and your local package cache will be updated.</li>
-<li>nodejs package contains the nodejs binary as well as npm, so you don't need to install npm separately. </li>
-</ul>
-<pre><code>cd ~
-curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-sudo bash nodesource_setup.sh
-sudo apt install nodejs -y
-node -v
+<h3 id="verify-docker">verify docker</h3>
+<pre><code>docker run hello-world
+</code></pre>
+
+<h3 id="setup-hosts-file">setup hosts file</h3>
+<p>edit <strong>/etc/hosts</strong> to map mycluster.icp to ICP IP address and configure docker to use insecure login</p>
+<p>assuming ICP IP: <strong>161.222.28.45</strong>, add the following into <strong>/etc/hosts</strong></p>
+<pre><code>161.222.28.45 mycluster.icp
+</code></pre>
+
+<h3 id="clone-the-tutorial-project">clone the tutorial project</h3>
+<p>run the following command to clone the git project</p>
+<pre><code>git clone https://github.com/ibmcloudprivate2/httpbin-wrapper.git
+cd httpbin-wrapper
+cp .env.sample .env
+</code></pre>
+
+<h3 id="verify-nodejs-and-npm-are-installed">verify nodejs and npm are installed</h3>
+<pre><code>node -v
 npm -v
 </code></pre>
 
-<ul>
-<li>for some npm packages to work (those that require compiling code from source, for example), you will need to install the build-essential package</li>
-</ul>
-<pre><code>sudo apt install build-essential
+<h3 id="install-the-application">install the application</h3>
+<pre><code>npm install
+npm test
 </code></pre>
 
+<h3 id="test-the-appliation">test the appliation</h3>
 <ul>
 <li>test the application</li>
 </ul>
-<pre><code>   npm install
-   npm test
+<pre><code>node -r dotenv/config server.js &amp;
+
+curl http://localhost:1323
+
 </code></pre>
 
 <ul>
-<li>build the image </li>
+<li>terminal the app, the process id with the following command.</li>
 </ul>
-<pre><code>   docker build . -t &lt;image-name&gt;:&lt;image-tag&gt;
+<pre><code>ps -ef | grep node
+
+vagrant   3181  1836  1 14:36 pts/0    00:00:00 node -r dotenv/config server.js
+vagrant   3195  1836  0 14:37 pts/0    00:00:00 grep --color=auto node
+
+kill 3181
 </code></pre>
 
 <ul>
-<li>test the image</li>
+<li>build the image, specify image-name and image-tag of your choice.</li>
 </ul>
-<pre><code>   docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 js-httpbin:2.0 &lt;image-name&gt;:&lt;image-tag&gt;
+<pre><code>docker build . -t &lt;image-name&gt;:&lt;image-tag&gt;
+</code></pre>
+
+<p><strong>example</strong></p>
+<pre><code>docker build . -t js-nodeapp:1.0
 </code></pre>
 
 <ul>
-<li>tag the image for ICP</li>
+<li>test the docker image</li>
 </ul>
-<pre><code>   docker tag js-httpbin:2.0 mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;
+<pre><code>docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 &lt;image-name&gt;:&lt;image-tag&gt;
+</code></pre>
+
+<p><strong>example</strong></p>
+<p>run the application as daemon (background)</p>
+<pre><code>docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -d -p 5000:3000 js-nodeapp:1.0
+</code></pre>
+
+<p>list the docker running container</p>
+<pre><code>docker ps
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+a2c857faef87        js-nodeapp:1.0      &quot;docker-entrypoint...&quot;   3 minutes ago       Up 3 minutes        0.0.0.0:5000-&gt;3000/tcp   mystifying_snyder
+</code></pre>
+
+<p>access the application, the above command forward host port 5000 to the internal application port 3000.</p>
+<pre><code>curl http://localhost:5000
+</code></pre>
+
+<p>terminal docker running container</p>
+<pre><code>docker kill a2c857faef87
 </code></pre>
 
 <ul>
-<li>push the image to kubernetes platform</li>
+<li>tag the image for ICP image repository, use the namespace assigned to user.</li>
 </ul>
-<p>edit /etc/hosts to map  mycluster.icp to ICP IP address and configure docker to use insecure login</p>
-<pre><code>   docker login mycluster.icp:8500
-   docker push mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;
+<pre><code>docker tag js-httpbin:2.0 mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;
+</code></pre>
+
+<p><strong>example</strong></p>
+<p>assuming user has access to namespace: auser01</p>
+<pre><code>docker tag js-httpbin:2.0 mycluster.icp:8500/auser01/js-nodeapp:1.0
 </code></pre>
 
 <ul>
-<li>run the image</li>
+<li>login and push the image to kubernetes platform</li>
 </ul>
-<pre><code>   kubectl apply -f ./k8s/httpbin.yaml
+<pre><code>docker login mycluster.icp:8500
+docker push mycluster.icp:8500/auser01/js-nodeapp:1.0
+</code></pre>
+
+<ul>
+<li>run the image in ICP, update the httpbin.yaml to reference the image push to ICP repo accordingly.</li>
+</ul>
+<pre><code>kubectl apply -f ./k8s/httpbin.yaml
 </code></pre>
 
 <h2 id="further-exercise">Further exercise</h2>
@@ -555,6 +716,8 @@ npm -v
 <h2 id="references">References</h2>
 <ul>
 <li>using <a href="https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/readme.md">virtualbox and vagrant</a> to practice nodejs deployment to ICP.</li>
+<li>uninstall nodejs and npm <code>sudo yum remove -y nodejs npm</code></li>
+<li>setup virtualbox guest addition, run <code>vagrant plugin install vagrant-vbguest</code> to <a href="https://www.virtualbox.org/manual/ch04.html">guest addition</a> for the VM.</li>
 </ul>
                 
                   

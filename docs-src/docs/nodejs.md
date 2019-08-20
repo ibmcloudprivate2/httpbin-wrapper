@@ -1,8 +1,7 @@
 
-
 ## Introduction
 
-In this hands on exercise, you will learn
+In this tutorial, you will learn
 
 - how to build a docker image
 - how to push an image to a private repo
@@ -21,85 +20,181 @@ High level steps
 4. test it: docker run image
 5. docker tag (for target image repo)
 6. docker push
-7. run in k8s: kubectl apply - yaml
+7. download ICP cli tools: cloudctl and kubectl
+8. cloudctl login 
+9. run in k8s: kubectl apply - yaml
 
+To do this tutorial, we will use a Linux CentOS.
 
-## On your machine
+If you do not have a Linus O/S, do the following, on your host O/S
 
-- ensure you have your [pre-requisite](prepare.md) installed
+1. download and install virtualbox in your host O/S
+2. download and install vagrant in your host O/S
+3. create a folder of choice and create a Vagrantfile with the following [content](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/Vagrantfile).
+4. run ```vagrant up``` and a centos will be provisioned using the Vagrantfile with VirtualBox. 
+5. run ```vagrant ssh`` to login to the provisioned centos
 
-## Install Nodejs and NPM
+In the CentOS, you will do the following steps
 
-- Install Nodejs from the repositories
+1. git clone https://github.com/ibmcloudprivate2/httpbin-wrapper.git
+2. setup insecure docker login
+3. setup hosts file
+4. install nodejs app
+5. test the nodejs app
+6. build image
+7. tag the image
+8. push the image to ICP image repo
+9. run the image in ICP
+
+## In centos
+
+### setup insecure docker login
+
+setup insecure docker login to ICP repo, edit  /etc/docker/daemon.json to include the following
+  
+```
+{ "insecure-registries": ["mycluster.icp:8500"] }
+```
+
+restart docker
+```
+sudo systemctl restart docker
+```
+
+### verify docker 
 
 ```
-sudo apt install nodejs
+docker run hello-world
 ```
 
-- Uninstall Nodejs
+### setup hosts file
+
+edit **/etc/hosts** to map mycluster.icp to ICP IP address and configure docker to use insecure login
+
+assuming ICP IP: **161.222.28.45**, add the following into **/etc/hosts**
 
 ```
-sudo apt remove nodejs
+161.222.28.45 mycluster.icp
 ```
 
-- we will install nodejs version 10.16.2
-- we will download a script ***nodesource_setup.sh*** for a specific version of nodejs
-- then run the downloaded script where PPA will be added to your configuration and your local package cache will be updated.
-- nodejs package contains the nodejs binary as well as npm, so you don't need to install npm separately. 
+### clone the tutorial project
+
+run the following command to clone the git project
 
 ```
-cd ~
-curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh
-sudo bash nodesource_setup.sh
-sudo apt install nodejs -y
+git clone https://github.com/ibmcloudprivate2/httpbin-wrapper.git
+cd httpbin-wrapper
+cp .env.sample .env
+```
+
+### verify nodejs and npm are installed
+
+```
 node -v
 npm -v
 ```
 
-- for some npm packages to work (those that require compiling code from source, for example), you will need to install the build-essential package
+### install the application
 
-```
-sudo apt install build-essential
-```
-   
-- test the application
-   
 ```   
-   npm install
-   npm test
+npm install
+npm test
 ```
 
-- build the image 
+### test the appliation
+
+- test the application
+
+```
+node -r dotenv/config server.js &
+
+curl http://localhost:1323
+
+```
+
+- terminal the app, the process id with the following command.
+
+```
+ps -ef | grep node
+
+vagrant   3181  1836  1 14:36 pts/0    00:00:00 node -r dotenv/config server.js
+vagrant   3195  1836  0 14:37 pts/0    00:00:00 grep --color=auto node
+
+kill 3181
+```
+
+- build the image, specify image-name and image-tag of your choice.
+
+```
+docker build . -t <image-name>:<image-tag>
+```
+
+**example**
+
+```
+docker build . -t js-nodeapp:1.0
+```
+
+- test the docker image
    
 ```
-   docker build . -t <image-name>:<image-tag>
+docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 <image-name>:<image-tag>
 ```
 
-- test the image
-   
+**example**
+
+run the application as daemon (background)
+
 ```
-   docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 js-httpbin:2.0 <image-name>:<image-tag>
+docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -d -p 5000:3000 js-nodeapp:1.0
 ```
 
-- tag the image for ICP
-   
+list the docker running container
+
 ```
-   docker tag js-httpbin:2.0 mycluster.icp:8500/<namespace>/<image-name>:<image-tag>
+docker ps
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+a2c857faef87        js-nodeapp:1.0      "docker-entrypoint..."   3 minutes ago       Up 3 minutes        0.0.0.0:5000->3000/tcp   mystifying_snyder
 ```
 
-- push the image to kubernetes platform
+access the application, the above command forward host port 5000 to the internal application port 3000.
+
+```
+curl http://localhost:5000
+```
+
+terminal docker running container
+
+```
+docker kill a2c857faef87
+```
+
+- tag the image for ICP image repository, use the namespace assigned to user.
+
+```
+docker tag js-httpbin:2.0 mycluster.icp:8500/<namespace>/<image-name>:<image-tag>
+```
+
+**example**
+
+assuming user has access to namespace: auser01
+
+```
+docker tag js-httpbin:2.0 mycluster.icp:8500/auser01/js-nodeapp:1.0
+```
+
+- login and push the image to kubernetes platform
     
-   edit /etc/hosts to map  mycluster.icp to ICP IP address and configure docker to use insecure login
-   
 ```
-   docker login mycluster.icp:8500
-   docker push mycluster.icp:8500/<namespace>/<image-name>:<image-tag>
+docker login mycluster.icp:8500
+docker push mycluster.icp:8500/auser01/js-nodeapp:1.0
 ```
 
-- run the image
-   
+- run the image in ICP, update the httpbin.yaml to reference the image push to ICP repo accordingly.
+
 ```
-   kubectl apply -f ./k8s/httpbin.yaml
+kubectl apply -f ./k8s/httpbin.yaml
 ```
 
 ## Further exercise
@@ -112,7 +207,8 @@ sudo apt install build-essential
 6. update the application to new version of image
 7. rollback
 
-
 ## References
 
 - using [virtualbox and vagrant](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/readme.md) to practice nodejs deployment to ICP.
+- uninstall nodejs and npm ```sudo yum remove -y nodejs npm```
+- setup virtualbox guest addition, run ```vagrant plugin install vagrant-vbguest``` to [guest addition](https://www.virtualbox.org/manual/ch04.html) for the VM.
