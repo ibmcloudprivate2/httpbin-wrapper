@@ -40,6 +40,14 @@ start up a okd local cluster in centos.
 oc cluster up
 ```
 
+### problem
+
+if you encountered, "error: did not detect an --insecure-registry argument on the Docker daemon"
+
+```
+sudo sed -i 's/{}/{ "insecure-registries": ["172.30.0.0\/16"] }/g' /etc/docker/daemon.json && cat /etc/docker/daemon.json
+```
+
 ### access the okd console in browser
 
 exit centos, from your host machine, login
