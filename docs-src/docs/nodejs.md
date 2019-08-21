@@ -300,6 +300,6 @@ kubectl apply -f ./k8s/httpbin.yaml
 - Configuration as Code with [Ansible](https://www.ansible.com/) or [Chef](https://www.chef.io/products/automate/)
 - OWASP Zed Attack Proxy ([ZAP](https://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project)) [tutorial](https://owasp-academy.teachable.com/p/owasp-zap-tutorial).
 - devops security [aqua](https://www.aquasec.com/) 
-- code scan [SonarQube](https://www.sonarqube.org/)
+- Code Quality and Security [SonarQube](https://www.sonarqube.org/)
 - uninstall nodejs and npm ```sudo yum remove -y nodejs npm```
 - setup virtualbox guest addition, run ```vagrant plugin install vagrant-vbguest``` to [guest addition](https://www.virtualbox.org/manual/ch04.html) for the VM.
