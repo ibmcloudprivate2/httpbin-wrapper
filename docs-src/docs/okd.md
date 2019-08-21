@@ -10,7 +10,7 @@ to setup centos with OpenShift aka OKD, you need to have
 
 1. create a folder of choice
 2. create a file **Vagrantfile**
-3. copy the content into the **Vagrantfile** created above.
+3. copy the [content](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/okdcentos/Vagrantfile) into the **Vagrantfile** created above.
 
 ## OKD setup
 
