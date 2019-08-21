@@ -43,7 +43,7 @@ Vagrant.configure("2") do |config|
   # Bridged networks make the machine appear as another physical device on
   # your network.
   # config.vm.network "public_network"
-  config.vm.network "public_network", use_dhcp_assigned_default_route: true
+  config.vm.network "public_network", use_dhcp_assigned_default_route: true, bridge: "bridge100"
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
@@ -76,7 +76,6 @@ Vagrant.configure("2") do |config|
 
     sudo yum -y update
 
-    # sudo yum install git epel-release docker ansible dnsmasq wget -y 
     sudo yum install git epel-release ansible pyOpenSSL python-cryptography python-lxml docker -y
     sudo yum install wget -y
 
@@ -96,18 +95,18 @@ Vagrant.configure("2") do |config|
     # upgrade ansible
     sudo pip install --upgrade ansible
 
-    # start docker
-    sudo systemctl start docker
-
     # ensure docker started on reboot
     sudo systemctl enable docker
+
+    # start docker
+    sudo systemctl start docker
 
     # fix error due to docker not supported for overlay2
     sudo sed -i 's/overlay2/devicemapper/g' /etc/sysconfig/docker-storage && cat /etc/sysconfig/docker-storage
     sudo sed -i 's/overlay2/devicemapper/g' /etc/sysconfig/docker-storage-setup && cat /etc/sysconfig/docker-storage-setup
 
     # setup insecure docker login
-    sudo sed -i 's/{}/{ "insecure-registries": ["172.30.0.0\/16"] }/g' /etc/docker/daemon.json && cat /etc/docker/daemon.json
+    echo '{ "insecure-registries": ["172.30.0.0/16" ] }' | sudo tee  /etc/docker/daemon.json 
 
     # restart docker after using devicemapper
     sudo systemctl restart docker
@@ -118,8 +117,9 @@ Vagrant.configure("2") do |config|
     # Download the Linux oc binary
     wget https://github.com/openshift/origin/releases/download/v3.11.0/openshift-origin-client-tools-v3.11.0-0cbc58b-linux-64bit.tar.gz
     tar xvf openshift-origin-client-tools*.tar.gz
-    cd openshift-origin-client*/
-    sudo mv oc kubectl  /usr/local/bin/
+    cd openshift-origin-client*/ && sudo mv oc kubectl  /usr/local/bin/
+
+    /usr/local/bin/oc cluster up
 
   SHELL
   # config.vm.provision :shell, path: "bootstrap.sh"  
