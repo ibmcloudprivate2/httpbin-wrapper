@@ -178,6 +178,12 @@ All files  |    83.33 |       50 |    88.24 |    92.31 |                   |
 -----------|----------|----------|----------|----------|-------------------|
 ```
 
+### check ip of your VM
+
+```
+ip a
+```
+
 ### test the appliation
 
 - test the application
