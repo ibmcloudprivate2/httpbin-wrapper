@@ -23,6 +23,7 @@ using vagrant it will start up and install the following.
 - python
 - pip
 - okd 3.11
+- start up the cluster
 
 ### start the machine
 
@@ -48,27 +49,9 @@ vagrant up
     default: Which interface should the network bridge to? 11
 ```
 
-### login machine centos shell
-
-you will be prompted with choosing the interface, this should be usually the bridge in your machine.
-
-```
-vagrant ssh
-```
-
-## in machine centos shell
-
-### bootstrap a local single server OpenShift Origin cluster
-
-download and install local okd cluster in centos.
-
-```
-oc cluster up
-```
-
 ### access the okd console in browser
 
-exit centos, from your host machine, login
+from your host machine, login
 
 id: developer
 pw: any value

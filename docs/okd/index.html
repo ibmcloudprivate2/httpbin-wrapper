@@ -334,33 +334,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#login-machine-centos-shell" title="login machine centos shell" class="md-nav__link">
-    login machine centos shell
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#in-machine-centos-shell" title="in machine centos shell" class="md-nav__link">
-    in machine centos shell
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bootstrap-a-local-single-server-openshift-origin-cluster" title="bootstrap a local single server OpenShift Origin cluster" class="md-nav__link">
-    bootstrap a local single server OpenShift Origin cluster
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#access-the-okd-console-in-browser" title="access the okd console in browser" class="md-nav__link">
     access the okd console in browser
   </a>
@@ -456,33 +429,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#login-machine-centos-shell" title="login machine centos shell" class="md-nav__link">
-    login machine centos shell
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#in-machine-centos-shell" title="in machine centos shell" class="md-nav__link">
-    in machine centos shell
-  </a>
-  
-    <nav class="md-nav">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#bootstrap-a-local-single-server-openshift-origin-cluster" title="bootstrap a local single server OpenShift Origin cluster" class="md-nav__link">
-    bootstrap a local single server OpenShift Origin cluster
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#access-the-okd-console-in-browser" title="access the okd console in browser" class="md-nav__link">
     access the okd console in browser
   </a>
@@ -542,6 +488,7 @@
 <li>python</li>
 <li>pip</li>
 <li>okd 3.11</li>
+<li>start up the cluster</li>
 </ul>
 <h3 id="start-the-machine">start the machine</h3>
 <p>you will be prompted with a list of interface to use, choose the interface accordingly.</p>
@@ -564,19 +511,8 @@
     default: Which interface should the network bridge to? 11
 </code></pre>
 
-<h3 id="login-machine-centos-shell">login machine centos shell</h3>
-<p>you will be prompted with choosing the interface, this should be usually the bridge in your machine.</p>
-<pre><code>vagrant ssh
-</code></pre>
-
-<h2 id="in-machine-centos-shell">in machine centos shell</h2>
-<h3 id="bootstrap-a-local-single-server-openshift-origin-cluster">bootstrap a local single server OpenShift Origin cluster</h3>
-<p>download and install local okd cluster in centos.</p>
-<pre><code>oc cluster up
-</code></pre>
-
 <h3 id="access-the-okd-console-in-browser">access the okd console in browser</h3>
-<p>exit centos, from your host machine, login</p>
+<p>from your host machine, login</p>
 <p>id: developer
 pw: any value</p>
 <pre><code>https://127.0.0.1:8443
