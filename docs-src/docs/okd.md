@@ -60,6 +60,26 @@ pw: any value
 https://127.0.0.1:8443
 ```
 
+### using on shutdown.
+
+you can start your okd centos again
+
+```
+vagrant up
+```
+
+login to centos shell
+
+```
+vagrant ssh
+```
+
+within the centos shell, to start the okd cluster again
+
+```
+oc cluster up
+```
+
 ## Resources
 
 - install [docker-ce](https://docs.docker.com/install/linux/docker-ce/centos/) in centos
