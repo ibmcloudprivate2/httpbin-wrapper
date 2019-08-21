@@ -12,6 +12,7 @@ nav:
         # php: php.md
         python flask: python.md
         # swift: swift.md
+    - Deploy a local cluster in centos: okd.md
     - About: about.md
 # theme: readthedocs
 theme:

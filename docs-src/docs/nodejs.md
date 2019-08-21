@@ -309,3 +309,4 @@ kubectl apply -f ./k8s/httpbin.yaml
 - Code Quality and Security [SonarQube](https://www.sonarqube.org/)
 - uninstall nodejs and npm ```sudo yum remove -y nodejs npm```
 - setup virtualbox guest addition, run ```vagrant plugin install vagrant-vbguest``` to [guest addition](https://www.virtualbox.org/manual/ch04.html) for the VM.
+- IBM [Skill gateways](https://www.ibm.com/services/learning/ites.wss/zz-en?pageType=page&c=a0011023)
