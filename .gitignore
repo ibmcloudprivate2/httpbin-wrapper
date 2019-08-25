@@ -6,3 +6,4 @@ istio-1.2.0
 .DS_Store
 site
 .vagrant
+docs-src/docs/ocp/
