@@ -27,26 +27,10 @@ using vagrant it will start up and install the following.
 
 ### start the machine
 
-you will be prompted with a list of interface to use, choose the interface accordingly.
+a new VM will be provisined with the following command, it will read the Vagrantfile and provision the VM accordingly.
 
 ```
 vagrant up
-
-1) en13: Belkin USB-C LAN
-2) en0: Wi-Fi (AirPort)
-3) p2p0
-4) awdl0
-5) en4: Thunderbolt 3
-6) en11: Thunderbolt 4
-7) en3: Thunderbolt 1
-8) en10: Thunderbolt 2
-9) bridge0
-10) en14: Ethernet(?)
-11) bridge100
-12) en5: USB Ethernet(?)
-==> default: When choosing an interface, it is usually the one that is
-==> default: being used to connect to the internet.
-    default: Which interface should the network bridge to? 11
 ```
 
 ### access the okd console in browser
