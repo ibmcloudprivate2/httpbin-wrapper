@@ -14,6 +14,7 @@ nav:
         # swift: swift.md
     - Deploy a OKD 3.11 in centos: okd.md
     - Deploy K3S in centos: k3s.md
+    - Deploy minishift: minishift.md
     - About: about.md
 # theme: readthedocs
 theme:
