@@ -330,9 +330,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-minishift" title="install minishift" class="md-nav__link">
-    install minishift
+  <a href="#minishift" title="minishift" class="md-nav__link">
+    minishift
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install" title="install" class="md-nav__link">
+    install
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start" title="start" class="md-nav__link">
+    start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop" title="stop" class="md-nav__link">
+    stop
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -392,9 +419,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#install-minishift" title="install minishift" class="md-nav__link">
-    install minishift
+  <a href="#minishift" title="minishift" class="md-nav__link">
+    minishift
   </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install" title="install" class="md-nav__link">
+    install
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#start" title="start" class="md-nav__link">
+    start
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stop" title="stop" class="md-nav__link">
+    stop
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -431,10 +485,19 @@
 <li>internet access</li>
 <li>installed <a href="https://brew.sh/">brew</a></li>
 </ul>
-<h2 id="install-minishift">install minishift</h2>
+<h2 id="minishift">minishift</h2>
 <p>from a mac terminal, run the following command, a VM will be started after installation with a link to access the minishift console.</p>
+<h3 id="install">install</h3>
 <pre><code>brew cask install minishift
+</code></pre>
+
+<h3 id="start">start</h3>
+<pre><code>
 minishift start --vm-driver virtualbox
+</code></pre>
+
+<h3 id="stop">stop</h3>
+<pre><code>minishift stop
 </code></pre>
 
 <p>To explore do refer to <a href="https://docs.okd.io/latest/minishift/using/index.html">Using Minishift</a></p>

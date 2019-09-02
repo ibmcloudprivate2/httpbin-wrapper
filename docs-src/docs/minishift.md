@@ -9,13 +9,27 @@ Ensure you have
 - installed [brew](https://brew.sh/)
 
 
-## install minishift
+## minishift
 
 from a mac terminal, run the following command, a VM will be started after installation with a link to access the minishift console.
 
+
+### install
 ```
 brew cask install minishift
+```
+
+### start
+
+```
+
 minishift start --vm-driver virtualbox
+```
+
+### stop
+
+```
+minishift stop
 ```
 
 To explore do refer to [Using Minishift](https://docs.okd.io/latest/minishift/using/index.html)
