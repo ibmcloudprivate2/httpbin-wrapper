@@ -349,8 +349,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#download-cli" title="download CLI" class="md-nav__link">
+    download CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#test-the-appliation" title="test the appliation" class="md-nav__link">
     test the appliation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminate-the-application" title="terminate the application" class="md-nav__link">
+    terminate the application
   </a>
   
 </li>
@@ -546,8 +560,22 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#download-cli" title="download CLI" class="md-nav__link">
+    download CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#test-the-appliation" title="test the appliation" class="md-nav__link">
     test the appliation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#terminate-the-application" title="terminate the application" class="md-nav__link">
+    terminate the application
   </a>
   
 </li>
@@ -671,11 +699,22 @@ npm -v
 </code></pre>
 
 <h3 id="install-the-application">install the application</h3>
+<ul>
+<li>build the application with the following command</li>
+</ul>
 <pre><code>npm install
+</code></pre>
 
-npm test
+<ul>
+<li>run the test where it will test API endpoints and code coverage.</li>
+</ul>
+<pre><code>npm test
+</code></pre>
 
-&gt; ls@1.0.0 test /home/vagrant/httpbin-wrapper
+<ul>
+<li>sample output</li>
+</ul>
+<pre><code>&gt; ls@1.0.0 test /home/vagrant/httpbin-wrapper
 &gt; nyc mocha -r dotenv/config --exit --timeout 10000
 
 Your port is: 1323
@@ -753,44 +792,103 @@ All files  |    83.33 |       50 |    88.24 |    92.31 |                   |
 <pre><code>ip a
 </code></pre>
 
-<h3 id="test-the-appliation">test the appliation</h3>
+<h3 id="download-cli">download CLI</h3>
+<p>You can operate on the kubernetes cluster with CLI tool, to do that, you need to download the CLI tools with links from the sytem console.</p>
+<p>Assuming: your system console url is https://<strong>119.81.213.119</strong>:8443/console/welcome</p>
 <ul>
-<li>test the application</li>
+<li>download cloudctl</li>
+</ul>
+<pre><code>curl -kLo cloudctl-linux-amd64-v3.2.0-634 https://119.81.213.119:8443/api/cli/cloudctl-linux-amd64
+</code></pre>
+
+<ul>
+<li>make the downloaded file as executable</li>
+</ul>
+<p>check the name of the downloaded file</p>
+<pre><code>ls -l
+</code></pre>
+
+<ul>
+<li>then make the file executable using <strong>chmod</strong> command</li>
+</ul>
+<pre><code>chmod 755 cloudctl-linux-amd64-v3.2.0-634
+</code></pre>
+
+<ul>
+<li>move the file to folder <strong>/usr/local/bin</strong> </li>
+</ul>
+<pre><code>sudo mv cloudctl-linux-amd64-v3.2.0-634 /usr/local/bin/cloudctl
+</code></pre>
+
+<ul>
+<li>download kubectl CLI, running similar command.</li>
+</ul>
+<pre><code>curl -kLo kubectl-linux-amd64-v1.13.5 https://119.81.213.119:8443/api/cli/kubectl-linux-amd64
+chmod 755 kubectl-linux-amd64-v1.13.5
+sudo mv kubectl-linux-amd64-v1.13.5 /usr/local/bin/kubectl
+</code></pre>
+
+<h3 id="test-the-appliation">test the appliation</h3>
+<p>nodejs application is built earlier with the command <strong>npm install</strong> where a folder <em>node_modules</em> will be created with all application dependency modules downloaded based on <strong>package.json</strong> file.</p>
+<ul>
+<li>run the application in background using <strong>&amp;</strong> where the application required environment variable are defined in <strong>.env</strong></li>
 </ul>
 <pre><code>node -r dotenv/config server.js &amp;
+</code></pre>
 
-curl http://localhost:1323
+<ul>
+<li>access the application with command below to validate it is working</li>
+</ul>
+<pre><code>curl http://localhost:1323
+</code></pre>
 
-getURL: https://httpbin.org/delay/1
+<ul>
+<li>expected output, where the above url will called <strong>https://httpbin.org/delay/1</strong> where you get a 200 OK response after 1 second.</li>
+</ul>
+<pre><code>getURL: https://httpbin.org/delay/1
 context /: 200
 {&quot;args&quot;:{},&quot;data&quot;:&quot;&quot;,&quot;files&quot;:{},&quot;form&quot;:{},&quot;headers&quot;:{&quot;Accept&quot;:&quot;application/json&quot;,&quot;Host&quot;:&quot;httpbin.org&quot;},&quot;origin&quot;:&quot;219.83.38.2, 219.83.38.2&quot;,&quot;url&quot;:&quot;https://httpbin.org/delay/1&quot;}[vagrant@node1 httpbin-wrapper]
 </code></pre>
 
+<h3 id="terminate-the-application">terminate the application</h3>
 <ul>
-<li>terminal the app, the process id with the following command.</li>
+<li>determine the process id of the running application by obtaining the id with the following command</li>
 </ul>
 <pre><code>ps -ef | grep node
+</code></pre>
 
-vagrant   3181  1836  1 14:36 pts/0    00:00:00 node -r dotenv/config server.js
+<p>sample output</p>
+<pre><code>vagrant   3181  1836  1 14:36 pts/0    00:00:00 node -r dotenv/config server.js
 vagrant   3195  1836  0 14:37 pts/0    00:00:00 grep --color=auto node
-
-kill 3181
 </code></pre>
 
 <ul>
-<li>build the image, specify image-name and image-tag of your choice.</li>
+<li>terminate the app using the process id with the following command.</li>
+</ul>
+<pre><code>kill 3181
+</code></pre>
+
+<ul>
+<li>with validation that the application is working as expected, you are now ready to dockerize the application</li>
+<li>build the image, specify <image-name> and <image-tag> of your choice.</li>
 </ul>
 <pre><code>docker build . -t &lt;image-name&gt;:&lt;image-tag&gt;
 </code></pre>
 
+<blockquote>
+<p>Note: take note of the <image-name>, <image-tag> in your docker build command, you will need to use them in the <strong>httpbin.yaml</strong> later.</p>
+</blockquote>
 <p><strong>example</strong></p>
 <pre><code>docker build . -t js-nodeapp:1.0
 </code></pre>
 
 <ul>
-<li>test the docker image</li>
+<li>with the application dockerize, you need to test the dockerize application is working as expected.</li>
+<li>the application is configued using environment variable CONTAINER_PORT, TARGET_URL, TARGET_URI to works
+  where the running application can be accessed at port 5000 which is defined with <strong>-p</strong> flag and mapped to the application container exposed at <strong>3000</strong></li>
+<li>the container is run as a daemon or background process with the flag <strong>-d</strong></li>
 </ul>
-<pre><code>docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 &lt;image-name&gt;:&lt;image-tag&gt;
+<pre><code>docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -d -p 5000:3000 &lt;image-name&gt;:&lt;image-tag&gt;
 </code></pre>
 
 <p><strong>example</strong></p>
@@ -798,43 +896,88 @@ kill 3181
 <pre><code>docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -d -p 5000:3000 js-nodeapp:1.0
 </code></pre>
 
-<p>list the docker running container</p>
+<ul>
+<li>list the docker running container</li>
+</ul>
 <pre><code>docker ps
+</code></pre>
 
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
+<p>sample output</p>
+<pre><code>CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 a2c857faef87        js-nodeapp:1.0      &quot;docker-entrypoint...&quot;   3 minutes ago       Up 3 minutes        0.0.0.0:5000-&gt;3000/tcp   mystifying_snyder
 </code></pre>
 
-<p>access the application, the above command forward host port 5000 to the internal application port 3000.</p>
+<ul>
+<li>access the application, the above command forward host port 5000 to the internal application port 3000 you should expect similar output you seen earlier before dockerizing your application.</li>
+</ul>
 <pre><code>curl http://localhost:5000
 </code></pre>
 
-<p>terminal docker running container</p>
+<ul>
+<li>terminate docker running container using the CONTAINER ID obtained from <strong>docker ps</strong></li>
+</ul>
 <pre><code>docker kill a2c857faef87
 </code></pre>
 
 <ul>
-<li>tag the image for ICP image repository, use the namespace assigned to user.</li>
+<li>after you have validated the dockerize application is working as expected, you are not ready to push the image to image repository.</li>
+<li>before you can push your local image to image repository, you need to tag the image where you have access to.</li>
+<li>tag the image for ICP image repository, use the <strong><namespace></strong> assigned to your user ID.</li>
 </ul>
 <pre><code>docker tag js-nodeapp:1.0 mycluster.icp:8500/&lt;namespace&gt;/&lt;image-name&gt;:&lt;image-tag&gt;
 </code></pre>
 
 <p><strong>example</strong></p>
-<p>assuming user has access to namespace: auser01</p>
-<pre><code>docker tag js-nodeapp:1.0 mycluster.icp:8500/auser01/js-nodeapp:1.0
+<p>assuming user has access to namespace: <strong>user01</strong> then tag your tag as follows</p>
+<pre><code>docker tag js-nodeapp:1.0 mycluster.icp:8500/user01/js-nodeapp:1.0
 </code></pre>
 
 <ul>
 <li>login and push the image to kubernetes platform</li>
+<li>ensure your /etc/hosts has the correct <strong>IP-address</strong> for <strong>mycluster.icp</strong> host name</li>
+<li>ensure the docker is setup with insecure login to <strong>mycluster.icp</strong></li>
+<li>ensure you are using <strong><namespace></strong> you have access to otherwise you will encounter error</li>
 </ul>
 <pre><code>docker login mycluster.icp:8500
-docker push mycluster.icp:8500/auser01/js-nodeapp:1.0
+docker push mycluster.icp:8500/user01/js-nodeapp:1.0
 </code></pre>
 
 <ul>
-<li>run the image in ICP, update the httpbin.yaml to reference the image push to ICP repo accordingly.</li>
+<li>with the image pushed successfully to your <strong><namespace></strong> you can deploy application using kubectl cli</li>
+<li>to deploy and run the image in kuberenetes, update the httpbin.yaml to reference the image your pushed to repo.</li>
+<li>
+<p>before executing the following command, replace <namespace>  <image-name>, <image-tag> in  <strong>./k8s/httpbin.yaml</strong></p>
+</li>
+<li>
+<p>first login with cloudctl, and choose your <strong><namespace></strong> you have access to, this will setup the cluster context for you.</p>
+</li>
+</ul>
+<pre><code>cloudctl login -a https://119.81.213.119:8443
+</code></pre>
+
+<ul>
+<li>deploy the application with the following command which has a service and deployment file.</li>
+<li>a service file that exposed the application deployment with <strong>NodePort</strong> type.</li>
 </ul>
 <pre><code>kubectl apply -f ./k8s/httpbin.yaml
+</code></pre>
+
+<ul>
+<li>to check the pods (application) is running</li>
+</ul>
+<pre><code>kubectl get pods
+</code></pre>
+
+<ul>
+<li>to get service list</li>
+</ul>
+<pre><code>kubectl get services
+</code></pre>
+
+<ul>
+<li>to get description of a service listed, specify the service-id obtained in the list earlier</li>
+</ul>
+<pre><code>kubectl describle service &lt;service-id&gt;
 </code></pre>
 
 <h2 id="further-exercise">Further exercise</h2>
