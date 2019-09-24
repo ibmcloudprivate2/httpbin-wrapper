@@ -259,7 +259,7 @@ docker kill a2c857faef87
 - tag the image for ICP image repository, use the namespace assigned to user.
 
 ```
-docker tag js-httpbin:2.0 mycluster.icp:8500/<namespace>/<image-name>:<image-tag>
+docker tag js-nodeapp:1.0 mycluster.icp:8500/<namespace>/<image-name>:<image-tag>
 ```
 
 **example**
@@ -267,7 +267,7 @@ docker tag js-httpbin:2.0 mycluster.icp:8500/<namespace>/<image-name>:<image-tag
 assuming user has access to namespace: auser01
 
 ```
-docker tag js-httpbin:2.0 mycluster.icp:8500/auser01/js-nodeapp:1.0
+docker tag js-nodeapp:1.0 mycluster.icp:8500/auser01/js-nodeapp:1.0
 ```
 
 - login and push the image to kubernetes platform
