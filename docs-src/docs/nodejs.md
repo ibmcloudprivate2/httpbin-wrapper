@@ -99,11 +99,21 @@ npm -v
 
 ### install the application
 
+- build the application with the following command
+  
 ```   
 npm install
+```
 
+- run the test where it will test API endpoints and code coverage.
+  
+```
 npm test
+```
 
+- sample output
+
+```
 > ls@1.0.0 test /home/vagrant/httpbin-wrapper
 > nyc mocha -r dotenv/config --exit --timeout 10000
 
@@ -184,36 +194,100 @@ All files  |    83.33 |       50 |    88.24 |    92.31 |                   |
 ip a
 ```
 
+### download CLI
+
+You can operate on the kubernetes cluster with CLI tool, to do that, you need to download the CLI tools with links from the sytem console.
+
+Assuming: your system console url is https://**119.81.213.119**:8443/console/welcome
+
+
+- download cloudctl
+
+```
+curl -kLo cloudctl-linux-amd64-v3.2.0-634 https://119.81.213.119:8443/api/cli/cloudctl-linux-amd64
+```
+
+- make the downloaded file as executable
+
+check the name of the downloaded file
+
+```
+ls -l
+```
+
+- then make the file executable using **chmod** command
+  
+```
+chmod 755 cloudctl-linux-amd64-v3.2.0-634
+```
+
+- move the file to folder **/usr/local/bin** 
+
+```
+sudo mv cloudctl-linux-amd64-v3.2.0-634 /usr/local/bin/cloudctl
+```
+
+- download kubectl CLI, running similar command.
+
+```
+curl -kLo kubectl-linux-amd64-v1.13.5 https://119.81.213.119:8443/api/cli/kubectl-linux-amd64
+chmod 755 kubectl-linux-amd64-v1.13.5
+sudo mv kubectl-linux-amd64-v1.13.5 /usr/local/bin/kubectl
+```
+
 ### test the appliation
 
-- test the application
+nodejs application is built earlier with the command **npm install** where a folder *node_modules* will be created with all application dependency modules downloaded based on **package.json** file.
+
+- run the application in background using **&** where the application required environment variable are defined in **.env**
 
 ```
 node -r dotenv/config server.js &
+```
 
+- access the application with command below to validate it is working
+
+```
 curl http://localhost:1323
+```
 
+- expected output, where the above url will called **https://httpbin.org/delay/1** where you get a 200 OK response after 1 second.
+
+```
 getURL: https://httpbin.org/delay/1
 context /: 200
 {"args":{},"data":"","files":{},"form":{},"headers":{"Accept":"application/json","Host":"httpbin.org"},"origin":"219.83.38.2, 219.83.38.2","url":"https://httpbin.org/delay/1"}[vagrant@node1 httpbin-wrapper]
 ```
 
-- terminal the app, the process id with the following command.
+### terminate the application
 
+- determine the process id of the running application by obtaining the id with the following command
+  
 ```
 ps -ef | grep node
+```
 
+sample output
+
+```
 vagrant   3181  1836  1 14:36 pts/0    00:00:00 node -r dotenv/config server.js
 vagrant   3195  1836  0 14:37 pts/0    00:00:00 grep --color=auto node
+```
 
+- terminate the app using the process id with the following command.
+
+```
 kill 3181
 ```
 
-- build the image, specify image-name and image-tag of your choice.
+- with validation that the application is working as expected, you are now ready to dockerize the application
+- build the image, specify <image-name> and <image-tag> of your choice.
 
 ```
 docker build . -t <image-name>:<image-tag>
 ```
+
+> Note: take note of the <image-name>, <image-tag> in your docker build command, you will need to use them in the **httpbin.yaml** later.
 
 **example**
 
@@ -221,10 +295,13 @@ docker build . -t <image-name>:<image-tag>
 docker build . -t js-nodeapp:1.0
 ```
 
-- test the docker image
+- with the application dockerize, you need to test the dockerize application is working as expected.
+- the application is configued using environment variable CONTAINER_PORT, TARGET_URL, TARGET_URI to works
+  where the running application can be accessed at port 5000 which is defined with **-p** flag and mapped to the application container exposed at **3000**
+- the container is run as a daemon or background process with the flag **-d**
    
 ```
-docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -p 5000:3000 <image-name>:<image-tag>
+docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -d -p 5000:3000 <image-name>:<image-tag>
 ```
 
 **example**
@@ -235,28 +312,34 @@ run the application as daemon (background)
 docker run -e CONTAINER_PORT='3000' -e TARGET_URL='https://httpbin.org/' -e TARGET_URI='delay/1' -d -p 5000:3000 js-nodeapp:1.0
 ```
 
-list the docker running container
+- list the docker running container
 
 ```
 docker ps
+```
 
+sample output
+
+```
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                    NAMES
 a2c857faef87        js-nodeapp:1.0      "docker-entrypoint..."   3 minutes ago       Up 3 minutes        0.0.0.0:5000->3000/tcp   mystifying_snyder
 ```
 
-access the application, the above command forward host port 5000 to the internal application port 3000.
+- access the application, the above command forward host port 5000 to the internal application port 3000 you should expect similar output you seen earlier before dockerizing your application.
 
 ```
 curl http://localhost:5000
 ```
 
-terminal docker running container
+- terminate docker running container using the CONTAINER ID obtained from **docker ps**
 
 ```
 docker kill a2c857faef87
 ```
 
-- tag the image for ICP image repository, use the namespace assigned to user.
+- after you have validated the dockerize application is working as expected, you are not ready to push the image to image repository.
+- before you can push your local image to image repository, you need to tag the image where you have access to.
+- tag the image for ICP image repository, use the **<namespace>** assigned to your user ID.
 
 ```
 docker tag js-nodeapp:1.0 mycluster.icp:8500/<namespace>/<image-name>:<image-tag>
@@ -264,23 +347,55 @@ docker tag js-nodeapp:1.0 mycluster.icp:8500/<namespace>/<image-name>:<image-tag
 
 **example**
 
-assuming user has access to namespace: auser01
+assuming user has access to namespace: **user01** then tag your tag as follows
 
 ```
-docker tag js-nodeapp:1.0 mycluster.icp:8500/auser01/js-nodeapp:1.0
+docker tag js-nodeapp:1.0 mycluster.icp:8500/user01/js-nodeapp:1.0
 ```
 
 - login and push the image to kubernetes platform
+- ensure your /etc/hosts has the correct **IP-address** for **mycluster.icp** host name
+- ensure the docker is setup with insecure login to **mycluster.icp**
+- ensure you are using **<namespace>** you have access to otherwise you will encounter error
     
 ```
 docker login mycluster.icp:8500
-docker push mycluster.icp:8500/auser01/js-nodeapp:1.0
+docker push mycluster.icp:8500/user01/js-nodeapp:1.0
 ```
 
-- run the image in ICP, update the httpbin.yaml to reference the image push to ICP repo accordingly.
+- with the image pushed successfully to your **<namespace>** you can deploy application using kubectl cli
+- to deploy and run the image in kuberenetes, update the httpbin.yaml to reference the image your pushed to repo.
+- before executing the following command, replace <namespace>  <image-name>, <image-tag> in  **./k8s/httpbin.yaml**
 
+- first login with cloudctl, and choose your **<namespace>** you have access to, this will setup the cluster context for you.
+
+```
+cloudctl login -a https://119.81.213.119:8443
+```
+
+- deploy the application with the following command which has a service and deployment file.
+- a service file that exposed the application deployment with **NodePort** type.
+  
 ```
 kubectl apply -f ./k8s/httpbin.yaml
+```
+
+- to check the pods (application) is running
+
+```
+kubectl get pods
+```
+
+- to get service list
+
+```
+kubectl get services
+```
+
+- to get description of a service listed, specify the service-id obtained in the list earlier
+  
+```
+kubectl describle service <service-id>
 ```
 
 ## Further exercise
