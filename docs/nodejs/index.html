@@ -669,6 +669,10 @@
 <li>run the image in ICP</li>
 </ol>
 <h2 id="in-centos">In centos</h2>
+<p>to login to the centos, run</p>
+<pre><code>vagrant ssh
+</code></pre>
+
 <h3 id="setup-insecure-docker-login">setup insecure docker login</h3>
 <p>setup insecure docker login to ICP repo, edit  /etc/docker/daemon.json to include the following</p>
 <pre><code>{ &quot;insecure-registries&quot;: [&quot;mycluster.icp:8500&quot;] }
@@ -722,7 +726,7 @@ For more examples and ideas, visit:
 </code></pre>
 
 <ul>
-<li>you can list your docker image again on your machine</li>
+<li>you can list your docker image again on your machine, you will notice you will have hell0-world image in your local repo</li>
 </ul>
 <pre><code>docker images
 </code></pre>
@@ -740,12 +744,21 @@ cd httpbin-wrapper
 cp .env.sample .env
 </code></pre>
 
+<p>.env is a file is to defined the environment variable used by the application.</p>
 <h3 id="verify-nodejs-and-npm-are-installed">verify nodejs and npm are installed</h3>
+<p>the Vagrantfile will have installed the nodejs in centos, to validate you can run the following commands.</p>
 <pre><code>node -v
-v10.16.3
+</code></pre>
 
-npm -v
-6.9.0
+<p>sample output</p>
+<pre><code>v10.16.3
+</code></pre>
+
+<pre><code>npm -v
+</code></pre>
+
+<p>sample output</p>
+<pre><code>6.9.0
 </code></pre>
 
 <h3 id="install-the-application">install the application</h3>

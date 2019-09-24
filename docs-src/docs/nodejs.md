@@ -53,6 +53,12 @@ In the CentOS, you will do the following steps
 
 ## In centos
 
+to login to the centos, run
+
+```
+vagrant ssh
+```
+
 ### setup insecure docker login
 
 setup insecure docker login to ICP repo, edit  /etc/docker/daemon.json to include the following
@@ -81,6 +87,7 @@ docker run hello-world
 ```
 
 sample output
+
 ```
 Unable to find image 'hello-world:latest' locally
 Trying to pull repository docker.io/library/hello-world ...
@@ -111,7 +118,7 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
-- you can list your docker image again on your machine
+- you can list your docker image again on your machine, you will notice you will have hell0-world image in your local repo
 
 ```
 docker images
@@ -137,13 +144,29 @@ cd httpbin-wrapper
 cp .env.sample .env
 ```
 
+.env is a file is to defined the environment variable used by the application.
+
 ### verify nodejs and npm are installed
+
+the Vagrantfile will have installed the nodejs in centos, to validate you can run the following commands.
 
 ```
 node -v
-v10.16.3
+```
 
+sample output
+
+```
+v10.16.3
+```
+
+```
 npm -v
+```
+
+sample output
+
+```
 6.9.0
 ```
 
