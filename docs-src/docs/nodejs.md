@@ -32,7 +32,10 @@ If you do not have a Linus O/S, do the following, on your host O/S
 2. [download](https://www.vagrantup.com/downloads.html) and install vagrant in your host O/S
 3. create a folder of choice and create a file **Vagrantfile** with the following [content](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/Vagrantfile).
 4. run ```vagrant up``` and a centos will be provisioned using the Vagrantfile with VirtualBox. 
-5. run ```vagrant ssh`` to login to the provisioned centos
+5. run ```vagrant ssh`` to [login](https://www.vagrantup.com/docs/cli/ssh.html) to the provisioned centos
+6. run ```vagrant destroy``` to [destroy](https://www.vagrantup.com/docs/cli/destroy.html) the centos vm
+7. run ```vagrant halt``` to [shutdown](https://www.vagrantup.com/docs/cli/halt.html) the vm, to [start](https://www.vagrantup.com/docs/cli/up.html) vm, run ```vagrant up```
+8. run ```vagrant suspend``` to suspend the vm and  ```vagrant resume``` [resume](https://www.vagrantup.com/docs/cli/resume.html)
 
 In the CentOS, you will do the following steps
 
