@@ -36,6 +36,7 @@ If you do not have a Linus O/S, do the following, on your host O/S
 6. run ```vagrant destroy``` to [destroy](https://www.vagrantup.com/docs/cli/destroy.html) the centos vm
 7. run ```vagrant halt``` to [shutdown](https://www.vagrantup.com/docs/cli/halt.html) the vm, to [start](https://www.vagrantup.com/docs/cli/up.html) vm, run ```vagrant up```
 8. run ```vagrant suspend``` to suspend the vm and  ```vagrant resume``` [resume](https://www.vagrantup.com/docs/cli/resume.html)
+9. run ```vagrant status`` to get [status](https://www.vagrantup.com/docs/cli/status.html) of machines
 
 In the CentOS, you will do the following steps
 
