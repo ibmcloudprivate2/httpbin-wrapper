@@ -658,6 +658,7 @@
 <li>setup hosts file</li>
 <li>install nodejs app</li>
 <li>test the nodejs app</li>
+<li>download CLI</li>
 <li>build image</li>
 <li>tag the image</li>
 <li>push the image to ICP image repo</li>
@@ -674,13 +675,58 @@
 </code></pre>
 
 <h3 id="verify-docker">verify docker</h3>
+<ul>
+<li>to list images </li>
+</ul>
+<pre><code>docker images
+</code></pre>
+
+<ul>
+<li>to test docker is setup correctly, you can run the following command, it will run a docker image <strong>hello-world</strong>, if the image is not available in your local machine, it will pull from dockerhub repo.</li>
+</ul>
 <pre><code>docker run hello-world
+</code></pre>
+
+<p>sample output</p>
+<pre><code>Unable to find image 'hello-world:latest' locally
+Trying to pull repository docker.io/library/hello-world ...
+latest: Pulling from docker.io/library/hello-world
+1b930d010525: Pull complete
+Digest: sha256:b8ba256769a0ac28dd126d584e0a2011cd2877f3f76e093a7ae560f2a5301c00
+Status: Downloaded newer image for docker.io/hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the &quot;hello-world&quot; image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+</code></pre>
+
+<ul>
+<li>you can list your docker image again on your machine</li>
+</ul>
+<pre><code>docker images
 </code></pre>
 
 <h3 id="setup-hosts-file">setup hosts file</h3>
 <p>edit <strong>/etc/hosts</strong> to map mycluster.icp to ICP IP address and configure docker to use insecure login</p>
-<p>assuming ICP IP: <strong>161.222.28.45</strong>, add the following into <strong>/etc/hosts</strong></p>
-<pre><code>161.222.28.45 mycluster.icp
+<p>assuming ICP IP: <strong>119.81.213.119</strong>, add the following into <strong>/etc/hosts</strong></p>
+<pre><code>119.81.213.119 mycluster.icp
 </code></pre>
 
 <h3 id="clone-the-tutorial-project">clone the tutorial project</h3>

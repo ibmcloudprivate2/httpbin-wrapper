@@ -41,10 +41,11 @@ In the CentOS, you will do the following steps
 3. setup hosts file
 4. install nodejs app
 5. test the nodejs app
-6. build image
-7. tag the image
-8. push the image to ICP image repo
-9. run the image in ICP
+6. download CLI
+7. build image
+8. tag the image
+9. push the image to ICP image repo
+10. run the image in ICP
 
 ## In centos
 
@@ -63,18 +64,63 @@ sudo systemctl restart docker
 
 ### verify docker 
 
+- to list images 
+
+```
+docker images
+```
+
+- to test docker is setup correctly, you can run the following command, it will run a docker image **hello-world**, if the image is not available in your local machine, it will pull from dockerhub repo.
+  
 ```
 docker run hello-world
+```
+
+sample output
+```
+Unable to find image 'hello-world:latest' locally
+Trying to pull repository docker.io/library/hello-world ...
+latest: Pulling from docker.io/library/hello-world
+1b930d010525: Pull complete
+Digest: sha256:b8ba256769a0ac28dd126d584e0a2011cd2877f3f76e093a7ae560f2a5301c00
+Status: Downloaded newer image for docker.io/hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
+
+- you can list your docker image again on your machine
+
+```
+docker images
 ```
 
 ### setup hosts file
 
 edit **/etc/hosts** to map mycluster.icp to ICP IP address and configure docker to use insecure login
 
-assuming ICP IP: **161.222.28.45**, add the following into **/etc/hosts**
+assuming ICP IP: **119.81.213.119**, add the following into **/etc/hosts**
 
 ```
-161.222.28.45 mycluster.icp
+119.81.213.119 mycluster.icp
 ```
 
 ### clone the tutorial project
