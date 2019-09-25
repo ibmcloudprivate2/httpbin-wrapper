@@ -37,4 +37,4 @@ To explore do refer to [Using Minishift](https://docs.okd.io/latest/minishift/us
 ## Resources
 
 - [Learn OpenShift](https://learn.openshift.com/)
-- to use minishift in other [environment](https://docs.okd.io/latest/minishift/getting-started/setting-up-virtualization-environment.html)
+- to use minishift in other [environment](https://docs.okd.io/latest/minishift/getting-started/preparing-to-install.html)
