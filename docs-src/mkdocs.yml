@@ -16,6 +16,6 @@ nav:
     - Deploy K3S in centos: k3s.md
     - Deploy minishift: minishift.md
     - About: about.md
-# theme: readthedocs
-theme:
-  name: 'material'
+theme: readthedocs
+# theme:
+  # name: 'material'
