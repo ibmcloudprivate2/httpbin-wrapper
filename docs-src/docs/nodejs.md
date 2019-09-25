@@ -483,6 +483,7 @@ kubectl describle service <service-id>
 
 ## Resources
 
+- Kubernetes [concepts](https://kubernetes.io/docs/concepts/) and work on [task](https://kubernetes.io/docs/tasks/) to learn.
 - CNCF Cloud Native Interactive [Landscape](https://landscape.cncf.io/)
 - using [virtualbox and vagrant](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/readme.md) to practice nodejs deployment to ICP.
 - IBM [Code Patterns](https://developer.ibm.com/patterns/) sample codes to many different area, AI, Blockchain, Data Science, DevOps, Machine learning, API Management and many others.
