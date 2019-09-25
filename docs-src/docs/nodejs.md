@@ -483,6 +483,7 @@ kubectl describle service <service-id>
 
 ## Resources
 
+- CNCF Cloud Native Interactive [Landscape](https://landscape.cncf.io/)
 - using [virtualbox and vagrant](https://github.com/ibmcloudprivate2/httpbin-wrapper/blob/master/mycentos/readme.md) to practice nodejs deployment to ICP.
 - IBM [Code Patterns](https://developer.ibm.com/patterns/) sample codes to many different area, AI, Blockchain, Data Science, DevOps, Machine learning, API Management and many others.
 - IBM [Architecture Centers](https://www.ibm.com/cloud/garage/architectures) provides Reference Architecture to for many different categores: multi cloud, hybrid cloud, AI, Microservice, Security, Service Management.
