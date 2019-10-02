@@ -480,6 +480,16 @@ kubectl describle service <service-id>
 5. scale it
 6. update the application to new version of image
 7. rollback
+8. create helm chart
+9. create operator
+
+Now that we understand the application life cycle with nodejs, how can we further improve the experence as a developer to build, test, run and manage ?
+
+You can do this with Appsody, we will see how we can convert the existing codes using Appsody.
+
+With appsody there are 'stack' pre-built with runtime, instrumentation, and you can test, debug, profile your app for cloud native.
+
+To continue on next hands-on using Appsody here.
 
 ## Resources
 

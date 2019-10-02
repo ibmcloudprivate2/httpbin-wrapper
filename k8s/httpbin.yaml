@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: js-httpbin-service
-  namespace: <namespace>
+  namespace: user01
 spec:
   selector:
     app: js-httpbin-app
@@ -16,7 +16,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: js-httpbin-deployment
-  namespace: <namespace>
+  namespace: user01
   labels:
     app: js-httpbin-app
 spec:
@@ -30,24 +30,18 @@ spec:
         app: js-httpbin-app
     spec:
       containers:
-      # - name: js-httpbin-app
-      #   image: mycluster.icp:8500/<namespace>/<image-name>:<image-tag>
-      #   imagePullPolicy: Always
-      #   ports:
-      #   - containerPort: 3000
-      - env:
-        - name: TARGET_URL
-          value: https://httpbin.org
-        - name: CONTAINER_PORT
-          value: "3000"
-        - name: TARGET_URI
-          value: /delay/1
-        image: mycluster.icp:8500/<namespace>/<image-name>:<image-tag>
+      - name: js-httpbin-app
+        image: mycluster.icp:8500/user01/js-nodeapp:1.0
         imagePullPolicy: Always
-        name: js-httpbin-app
-        ports:
-        - containerPort: 3000
-          protocol: TCP
+        # securityContext:
+        #   privileged: false
+        #   readOnlyRootFilesystem: true
+        #   allowPrivilegeEscalation: false
+        #   runAsNonRoot: true
+        #   runAsUser: 1000
+        #   capabilities:
+        #     drop:
+        #     - ALL
         livenessProbe:
           httpGet:
             path: /liveness
@@ -59,6 +53,18 @@ spec:
             path: /readiness
             port: 3000
           initialDelaySeconds: 5
-          periodSeconds: 5
-
-
+          periodSeconds: 5  
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+        env:
+        - name: TARGET_URL
+          value: https://httpbin.org
+        - name: CONTAINER_PORT
+          value: "3000"
+        - name: TARGET_URI
+          value: /delay/1
