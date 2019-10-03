@@ -12,7 +12,7 @@ nav:
         # php: php.md
         python flask: python.md
         # swift: swift.md
-        appsody : appsody/appsody-nodejs.md
+        appsody : appsody/appsody.md
     - Deploy a OKD 3.11 in centos: okd.md
     - Deploy K3S in centos: k3s.md
     - Deploy minishift: minishift.md
