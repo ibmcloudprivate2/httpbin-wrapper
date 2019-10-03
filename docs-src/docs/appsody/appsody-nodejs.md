@@ -6,9 +6,10 @@ in the previous tutorial, you learned about the application development cycle wi
 2. test the nodejs
 3. dockerise your app
 4. test the dockerise app
-5. 
 
-in the directory where server.js located, run
+In this section we will learn about using Appsody where it will improves the development experience where it has hot reload of your application as you make changes to your app and also comes with app metrics for profiling during development time.
+
+in the directory where server.js located, run, the following command will make exising node.js application for use with appsody.
 
 ```
 appsody init nodejs none
@@ -48,14 +49,14 @@ http://localhost:5000/appmetrics-dash/
 
 ## load test
 
-you use [hey](https://github.com/rakyll/hey) to do a load test and get similar result below.
+you can use [hey](https://github.com/rakyll/hey) to do a load test and get similar result below.
 
 
 ```
 $ hey http://localhost:5000
 
 Summary:
-  Total:	    7.7418 secs
+  Total:	      7.7418 secs
   Slowest:	    2.2496 secs
   Fastest:	    1.7412 secs
   Average:	    1.9158 secs
@@ -65,14 +66,14 @@ Summary:
   Size/request:	177 bytes
 
 Response time histogram:
-  1.741 [1]	    |■
+  1.741 [1]	  |■
   1.792 [27]	|■■■■■■■■■■■■■■■■
   1.843 [69]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
   1.894 [43]	|■■■■■■■■■■■■■■■■■■■■■■■■■
-  1.945 [7]	    |■■■■
-  1.995 [3]	    |■■
-  2.046 [0]	    |
-  2.097 [0]	    |
+  1.945 [7]	  |■■■■
+  1.995 [3]   |■■
+  2.046 [0]   |
+  2.097 [0]   |
   2.148 [18]	|■■■■■■■■■■
   2.199 [21]	|■■■■■■■■■■■■
   2.250 [11]	|■■■■■■
@@ -102,3 +103,9 @@ Status code distribution:
 
 1. tag your image and push to your target repo
 2. use kubectl and deploy with ```kubectl apply -f ./k8s/httpbin.yaml```
+
+
+
+## Resources
+
+- Package your [Node.js](https://medium.com/appsody/nodes-cloud-packaged-fe60e29b699d) app for Cloud with Appsody
