@@ -56,27 +56,27 @@ you can use [hey](https://github.com/rakyll/hey) to do a load test and get simil
 $ hey http://localhost:5000
 
 Summary:
-  Total:	      7.7418 secs
-  Slowest:	    2.2496 secs
-  Fastest:	    1.7412 secs
-  Average:	    1.9158 secs
-  Requests/sec:	25.8337
+  Total:        7.7418 secs
+  Slowest:      2.2496 secs
+  Fastest:      1.7412 secs
+  Average:      1.9158 secs
+  Requests/sec: 25.8337
 
   Total data:	35400 bytes
   Size/request:	177 bytes
 
 Response time histogram:
-  1.741 [1]	  |■
-  1.792 [27]	|■■■■■■■■■■■■■■■■
-  1.843 [69]	|■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
-  1.894 [43]	|■■■■■■■■■■■■■■■■■■■■■■■■■
-  1.945 [7]	  |■■■■
+  1.741 [1]   |■
+  1.792 [27]  |■■■■■■■■■■■■■■■■
+  1.843 [69]  |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  1.894 [43]  |■■■■■■■■■■■■■■■■■■■■■■■■■
+  1.945 [7]   |■■■■
   1.995 [3]   |■■
   2.046 [0]   |
   2.097 [0]   |
-  2.148 [18]	|■■■■■■■■■■
-  2.199 [21]	|■■■■■■■■■■■■
-  2.250 [11]	|■■■■■■
+  2.148 [18]  |■■■■■■■■■■
+  2.199 [21]  |■■■■■■■■■■■■
+  2.250 [11]  |■■■■■■
 
 
 Latency distribution:
