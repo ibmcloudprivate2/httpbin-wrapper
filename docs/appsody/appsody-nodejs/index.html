@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  <link rel="shortcut icon" href="../../img/favicon.ico">
+  <title>Appsody nodejs - httpbin-wrapper</title>
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Appsody nodejs";
+    var mkdocs_page_input_path = "appsody/appsody-nodejs.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="../../js/jquery-2.1.1.min.js" defer></script>
+  <script src="../../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href="../.." class="icon icon-home"> httpbin-wrapper</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+	<ul class="current">
+	  
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../..">Introduction</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../topics/">Topics</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../prepare/">Prepare</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <span class="caption-text">Hands-on</span>
+    <ul class="subnav">
+                <li class="">
+                    
+    <a class="" href="../../go/">go</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../loopback/">loopback</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../nodejs/">nodejs</a>
+                </li>
+                <li class="">
+                    
+    <a class="" href="../../python/">python flask</a>
+                </li>
+    </ul>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../okd/">Deploy a OKD 3.11 in centos</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../k3s/">Deploy K3S in centos</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../minishift/">Deploy minishift</a>
+	    </li>
+          
+            <li class="toctree-l1">
+		
+    <a class="" href="../../about/">About</a>
+	    </li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../..">httpbin-wrapper</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Appsody nodejs</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p>in the previous tutorial, you learned about the application development cycle with nodejs where you goes through</p>
+<ol>
+<li>write your app and test codes </li>
+<li>test the nodejs</li>
+<li>dockerise your app</li>
+<li>test the dockerise app</li>
+<li></li>
+</ol>
+<p>in the directory where server.js located, run</p>
+<pre><code>appsody init nodejs none
+</code></pre>
+
+<h2 id="hot-reload">hot reload</h2>
+<h2 id="test-the-app">test the app</h2>
+<pre><code>appsody run --docker-options &quot;-e CONTAINER_PORT=3000 -e TARGET_URL=https://httpbin.org/ -e TARGET_URI=delay/1&quot; -p 5000:3000
+</code></pre>
+
+<h3 id="read-env-from-file">read env from file</h3>
+<pre><code>appsody run --docker-options &quot;--env-file .env&quot;
+</code></pre>
+
+<h2 id="app-metrics">app metrics</h2>
+<p>appsody run and appsody debug also injects a development-time only feature that adds a performance monitoring and profiling dashboard using the appmetrics-dash module</p>
+<p>This provides a display similar to the following, which provides data for:</p>
+<ul>
+<li>HTTP request responsiveness and HTTP throughput</li>
+<li>Performance of outbound HTTP requests and other requests</li>
+<li>Event Loop latency showing the delay before tasks are scheduled.</li>
+<li>CPU and Memory usage for the process and the system</li>
+</ul>
+<p>to access the dashboard, access it using the URI <strong>appmetrics-dash/</strong></p>
+<pre><code>http://localhost:5000/appmetrics-dash/
+</code></pre>
+
+<h2 id="load-test">load test</h2>
+<p>you use <a href="https://github.com/rakyll/hey">hey</a> to do a load test and get similar result below.</p>
+<pre><code>$ hey http://localhost:5000
+
+Summary:
+  Total:        7.7418 secs
+  Slowest:      2.2496 secs
+  Fastest:      1.7412 secs
+  Average:      1.9158 secs
+  Requests/sec: 25.8337
+
+  Total data:   35400 bytes
+  Size/request: 177 bytes
+
+Response time histogram:
+  1.741 [1]     |■
+  1.792 [27]    |■■■■■■■■■■■■■■■■
+  1.843 [69]    |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■
+  1.894 [43]    |■■■■■■■■■■■■■■■■■■■■■■■■■
+  1.945 [7]     |■■■■
+  1.995 [3]     |■■
+  2.046 [0]     |
+  2.097 [0]     |
+  2.148 [18]    |■■■■■■■■■■
+  2.199 [21]    |■■■■■■■■■■■■
+  2.250 [11]    |■■■■■■
+
+
+Latency distribution:
+  10% in 1.7877 secs
+  25% in 1.8085 secs
+  50% in 1.8452 secs
+  75% in 2.1152 secs
+  90% in 2.1755 secs
+  95% in 2.2044 secs
+  99% in 2.2495 secs
+
+Details (average, fastest, slowest):
+  DNS+dialup:   0.0017 secs, 1.7412 secs, 2.2496 secs
+  DNS-lookup:   0.0005 secs, 0.0000 secs, 0.0039 secs
+  req write:    0.0001 secs, 0.0000 secs, 0.0010 secs
+  resp wait:    1.9138 secs, 1.7411 secs, 2.2408 secs
+  resp read:    0.0001 secs, 0.0000 secs, 0.0002 secs
+
+Status code distribution:
+  [200] 200 responses
+</code></pre>
+
+<h2 id="to-deploy-to-k8s">to deploy to k8s</h2>
+<ol>
+<li>tag your image and push to your target repo</li>
+<li>use kubectl and deploy with <code>kubectl apply -f ./k8s/httpbin.yaml</code></li>
+</ol>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+
+</body>
+</html>
