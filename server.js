@@ -107,7 +107,7 @@ app.get('/delay5', (req, res) => {
 
 const server = app.listen(CONTAINER_PORT, HOST);
 
-console.log("Running on http:/" + HOST + ":" + CONTAINER_PORT);
+console.log("Running on http:/" + HOST + ":" + CONTAINER_PORT + " locally. \nIf your application port is not 3000, \nPlease run 'docker ps' in your terminal to find out the application port you can open in browser.");
 
 // handle process killed
 process.on('SIGTERM', () => {
