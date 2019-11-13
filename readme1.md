@@ -1,4 +1,4 @@
-# Building Dotnet application and deploy it into OCP private registry
+# Building Dotnet microservice for testing and deploy it into OCP private registry/ Dockerhub
 
 - This repo will have 3 section:
   Section 1: How to build image using docker and Dockerfile as a container image
