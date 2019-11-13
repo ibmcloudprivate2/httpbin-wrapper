@@ -271,7 +271,7 @@ latest: digest: sha256:1ce7366fbc35b99b43d7e9e8de5131f313552a7eee57e157c92e8cc9d
 ```
 
 
-### Complete! Well done! +1!
+### Complete! Well done! :+1:!
 
 
 
