@@ -9,3 +9,5 @@ site
 docs-src/docs/ocp/
 workshop
 *.log
+.vscode
+
