@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: js-httpbin-service
+  namespace: my-namespace
+spec:
+  selector:
+    app: js-httpbin-app
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
+  type: NodePort
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: js-httpbin-deployment
+  namespace: my-namespace
+  labels:
+    app: js-httpbin-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: js-httpbin-app
+  template:
+    metadata:
+      labels:
+        app: js-httpbin-app
+    spec:
+      containers:
+      - name: js-httpbin-app
+        image: docker-registry.default.svc:5000/my-namespace/http-bin:1.0.0
+        imagePullPolicy: Always
+        # securityContext:
+        #   privileged: false
+        #   readOnlyRootFilesystem: true
+        #   allowPrivilegeEscalation: false
+        #   runAsNonRoot: true
+        #   runAsUser: 1000
+        #   capabilities:
+        #     drop:
+        #     - ALL
+        livenessProbe:
+          httpGet:
+            path: /liveness
+            port: 3000
+          initialDelaySeconds: 3
+          periodSeconds: 3
+        readinessProbe:
+          httpGet:
+            path: /readiness
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 5
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 100m
+            memory: 128Mi
+        env:
+        - name: TARGET_URL
+          value: https://httpbin.org
+        - name: CONTAINER_PORT
+          value: "3000"
+        - name: TARGET_URI
+          value: /delay/1
+---
+
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: http-bin-1
+  namespace: my-namespace
+spec:
+  host: dc.test.okd.161.202.175.99.nip.io  # path: "/http-bin"
+  to:
+    kind: Service
+    name: js-httpbin-service
+    weight: 100
